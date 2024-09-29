@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage[italian]{babel} % italian language
+\usepackage{fullpage} % margins
+\usepackage{listings} % code formatting
+\usepackage{subfiles}       % subfiles
+\usepackage{graphicx}       % images
+\usepackage{xcolor}         % colors
+\usepackage{epigraph}
+\usepackage{supsi}
+\usepackage{mdframed}
+\usepackage{csquotes}
+\usepackage{parskip}        % skip line
+\usepackage{amsfonts}       % math symbols
+\usepackage{amssymb}        % math symbols
+\usepackage{amsmath}        % other math stuff
+\usepackage{tikz}           % math graphs
+
+\title{
+    Ambienti Operativi \\
+    \phantom{}\\
+    \large SUPSI Dipartimento Tecnologie Innovative
+}
+\author{Gianni Grasso}
+\supsisetup{Ambienti Operativi}
+
+\begin{document}
+\maketitle
+\hphantom{ }
+\vspace{14.5cm}
+
+\textbf{Classe}: I1B
+
+\textbf{Anno scolastico}: 2024/2025
+\pagebreak
+
+
+\tableofcontents
+\pagebreak
+
+\section{Introduzione}
+\subfile{sections/introduzione}
+\pagebreak
+
+
+\section{Bash}
+\subfile{sections/bash}
+\pagebreak
+
+%\begin{lstlisting}[language=Java,caption={Java version}]
+%public class HelloWorld {
+%   // Here's the main class
+%   public static void main(String[] args) {
+%       System.out.println("Hello, world!");
+%   }
+%}
+%\end{lstlisting}
+\end{document}

@@ -1,0 +1,28 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+La prima volta che apriremo un terminale potremo notare che il cursore è preceduto da: \textbf{utente@host:path\$}, dove utente sta per il nome dell'utente connesso alla macchina, host il nome del server e path il percorso corrente.
+
+È importante ricordare che in bash è tutto \textbf{case-sensitive}, sia i comandi che i nomi dei file e delle directory.
+
+\subsection{Comandi}
+La struttura di un comando da terminale è definita in questo modo:
+\begin{lstlisting}[language=bash]
+comando [-OPTION]... [ARGUMENT]...
+\end{lstlisting}
+Dove OPTION indica le opzioni (-a, -b, ...) e ARGUMENT gli argomenti, che possono essere obbligatori oppure no a dipendenza del comando.
+
+Per consultare il manuale di un comando digitare:
+\begin{lstlisting}[language=bash]
+man comando
+\end{lstlisting}
+
+\subsection{Globbin}
+Il Globbin consiste nell'utilizzare un pattern con uno o più caratteri "wildcard" per trovare o fare azioni sui file.
+\begin{itemize}
+    \item *, corrispondenza con zero o più caratteri qualsiasi
+    \item ?, corrispondenza con esattamente un carattere
+    \item $\lbrack \phantom{-} \rbrack$, corrispondenza tra un gruppo di caratteri
+    \item $\lbrack \text{a-z} \rbrack$, un carattere dalla 'a' alla 'z'
+    \item $\lbrack$\^{}abc$\rbrack$, non-corrispondenza tra un gruppo di caratteri
+\end{itemize}
+\end{document}

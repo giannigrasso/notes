@@ -1,0 +1,35 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+Per riuscire a capire cos'è un ambiente operativo, dobbiamo innanzitutto riuscire a vedere il computer come uno strumento di elaborazione dei dati alla quale vengono passati degli input e date delle istruzioni. L'ambiente operativo è il luogo nella quale vengono date queste istruzioni.
+
+È importante non fare confusione e non confondere il sistema operativo con l'ambiente operativo, il primo ha lo scopo di nascondere i meccanismi di gestione della macchina, rendendo l'utente in grado di poterla utilizzare senza conoscerne il funzionamento a basso livello, l'ambiente operativo invece fa da tramite tra gli utenti ed il sistema operativo e può essere visto come l'interfaccia nella quale si danno istruzioni alla macchina.
+
+\subsection{Tipi di file}
+Tutti i dati che si trovano su un computer sono rappresentati da una sequenza binaria, con \textbf{file binari} intendiamo che i dati non sono direttamente comprensibili da una persona mentre per con il termine \textbf{file personali} si intendono i file che possono essere compresi da una persona sotto forma di testo.
+
+Per codificare i dati testuali si associa ogni carattere a una sequenza binaria, non esiste però un'unica codifica dei caratteri, di seguito sono riportati alcuni esempi:
+\begin{itemize}
+    \item ASCII
+    \item Windows code pages
+    \item ISO 8859
+    \item Unicode
+    \item ...
+\end{itemize}
+
+Dobbiamo poi fare distinzione tra documenti testuali semplici e documenti strutturati, i primi sono quei documenti in cui la struttura logica non è facilmente distinguibile mentre nel secondo caso parliamo di documenti di testo in cui c'è una struttura che stabilisce il contenuto del file (ad esempio i file \textbf{csv}.
+
+\subsection{SSH}
+SSH, ovvero Secure Shell, è un protocollo di rete crittografico che ci consente di utilizzare servizi di rete in modo sicuro su una rete non protetta. Le sue applicazioni più comuni sono il login remoto e l'esecuzione da riga di comando, noi useremo il SSH per connetterci ad un server didattico.
+
+Per connetterci al server da macOS/Linux dobbiamo digitare a terminale il seguente comando:
+\begin{lstlisting}[language=bash]
+ssh linux1-didattica.supsi.ch -l nome.cognome@supsi.ch
+\end{lstlisting}
+
+\subsection{Struttura di un filesystem}
+Il filesystem di un sistema ha una struttura ad albero, la radice è la cartella \textbf{root (/)}, tutte le altre directory sono sottostanti ad essa.
+
+Tra le directory principali che ci interessano ci sono \textbf{/home}, cartella che contiene le directory degli utenti locali, e \textbf{/tmp} cartella nella quale risiedono i file temporanei.
+
+Un percorso può essere assoluto o relativo, nel primo caso specifichiamo l'intero percorso di una directory o un file, indipendentemente da dove ci troviamo, mentre nel secondo indichiamo il percorso per raggiungere un file a partire dalla posizione corrente.
+\end{document}

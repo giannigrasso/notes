@@ -1,0 +1,85 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+\subsection{Valutazione di un polinomio}
+Per capire Horner dobbiamo prima fare degli step intermedi che dimostrano la sua effettiva utilità, consideriamo un generico polinomio di terzo grado:
+$$
+    P(x) = a_3x^3 + a_2x^2 + a_1x + a_0
+$$
+dove $a_0, ..., a_3$ sono coefficienti reali qualsiasi.
+
+Calcoliamo quante operazioni sono necessarie per calcolare il valore del polinomio $P(x)$ in un generico punto $x_0$ effettuando le moltiplicazioni e le addizioni richieste:
+$$
+    P(x_0) = \underbrace{a_3x_0^3}_{\text{3 molt.}} + \underbrace{a_2x_0^2}_{\text{2 molt.}} + \underbrace{a_1x_0}_{\text{1 molt.}} + a_0
+$$
+notiamo che sono necessarie esattamente 6 moltiplicazioni e 3 addizioni.
+
+Ora invece consideriamo un generico polinomio di grado $n$:
+$$
+    P(x) = \sum_{k=0}^{n} a_kx^k = a_0 + a_1x + ... + a_nx^n
+$$
+dove $a_0, ..., a_n$ sono coefficienti reali qualsiasi.
+
+Abbiamo quindi lo stesso scenario del caso precedente ma con un polinomio di grado $n$ invece che di grado $3$. Procediamo in modo analogo a quanto fatto prima per determinare il numero di operazioni necessarie per calcolare il valore del polinomio $x_0$:
+$$
+    P(x_0) = \underbrace{a_nx_0^n}_{\text{n molt.}} + \underbrace{a_{n-1}x_0^{n-1}}_{\text{n - 1 molt.}} + ... + \underbrace{a_1x_0}_{\text{1 molt.}} + a_0
+$$
+Sfruttando la formula introdotta nello scorso capitolo risulta che servono:
+$$
+    \underbrace{\frac{n(n+1)}{2} + n}_{\text{molt.}} = \frac{1}{2}n^2 + \frac{3}{2}n
+$$
+operazioni, che corrispondono a una complessità temporale \textbf{quadratica}, ossia $O(n^2)$, poiché il termine maggiore è $n^2$.
+
+Se ora consideriamo nuovamente il polinomio di terzo grado di prima possiamo notare che esso può essere riscritto come:
+$$
+    P(x) = a_3x^3 + a_2x^2 + a_1x + a_0 = ((a_3x + a_2)x + a_1)x + a_0
+$$
+la cui correttezza può essere verificata sviluppando i conti. Notiamo che il numero di operazioni è diminuito, prima erano 6 moltiplicazioni e 3 addizioni mentre con la nuova formula le moltiplicazioni sono 3.
+
+Questa formula può essere generalizzata ad un polinomio di grado $n$:
+$$
+    P(x_0) = (((a_nx_0 + a_{n-1})x_0 + a_{n-2}) + ...)x_0 + a_0
+$$
+che corrisponde all'\textbf{algoritmo di Horner}, che consente di risolvere un polinomio mediante $n$ moltiplicazioni e $n$ addizioni (come visto prima). In totale sono quindi necessarie $2n$ operazioni e ciò corrisponde a una complessita temporale \textbf{lineare}, ossia $O(n)$.
+
+\pagebreak
+\subsection{Applicazione}
+L'algoritmo di Horner è utile per passare da un sistema di numerazione qualsiasi al sistema decimale (ad esempio da binario a decimale).
+
+Se consideriamo ad esempio il numero $3152$, possiamo scriverlo come:
+\begin{align*}
+    3152  &= 3 \cdot 1000 + 1 \cdot 100 + 5 \cdot 10 + 2 \\
+    &= 3 \cdot 10^3 + 1 \cdot 10^2 + 5 \cdot 10^1 + 2 \cdot 10^0
+\end{align*}
+A ciascuna cifra viene attribuita una diversa potenza di 10 in base alla posizione che occupa all'interno del numero considerato. Un generico numero $x \in \mathbb{N}$ può essere scritto come:
+$$
+    x = a_n10^n + a_{n-1}10^{n-1} + ... + a_0 = \sum_{i=0}^{n} a_i10^i
+$$
+dove $a_0,...,a_n$ corrisponde alle cifre del numero.
+
+Possiamo notare che la scrittura riportata è analoga a quella vista nella dimostrazione, che possiamo quindi riscrivere il numero come:
+$$
+    x = (((a_n \cdot 10 + a_{n-1}) \cdot 10 + a_{n-2}) + ...) \cdot 10 + a_0
+$$
+
+Per quanto riguarda gli altri sistemi numerici vale lo stesso discorso, consideriamo quindi un numero in una qualsiasi base $b$ e scriviamolo nel corrispondente in base 10:
+$$
+    x = a_nb^n + a_{n-1}b^{n-1} + ... + a_0 = \sum_{i=0}^{n} a_ib^i
+$$
+Ad esempio se vogliamo convertire $1201_3$ in base 10, svolgiamo questi calcoli:
+\begin{align*}
+    1201_3 &= \sum_{i=0}^{3} a_i3^i \\
+    &=1 \cdot 3^3 + 2 \cdot 3^2 + 0 \cdot 3^1 + 1 \cdot 3^0 \\
+    &=27 + 18 + 1 = 46_{10}
+\end{align*}
+
+Che utilizzando l'algoritmo di Horner diventa:
+\begin{align*}
+    1201_3 &= ((1 \cdot 3 + 2) \cdot 3 + 0) \cdot 3 + 1 \\
+    &= (5 \cdot 3 + 0) \cdot 3 + 1 \\
+    &= 15 \cdot 3 + 1 = 46_{10}
+\end{align*}
+
+\subsection{Horner inverso}
+L'algoritmo di Horner inverso, o \textbf{algoritmo del modulo}, consente invece di passare da base 10 a base $b$.
+
+\end{document}

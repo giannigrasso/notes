@@ -1,0 +1,35 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+La complessità (o efficenza) di un algoritmo è la quantità di risorse necessaria per la risoluzione di un determinato problema. Le risorse possono essere quantificate in termini di memoria o \textbf{tempo computazionale}.
+
+La complessità temporale viene solitamente misurata contando il numero di operazioni elementari che devono essere svolte dall'algoritmo e viene espressa tramite la \textbf{notazione O-grande}, che si concentra sul termine di grado maggiore, escludendo i coefficienti e i termini di grado inferiore.
+Ad esempio, supponiamo che un determinato algoritmo richieda di svolgere $2n^3+4n^2+n$, la sua complessità temporale è definita come $O(n^3)$ perchè il termine maggiore è $n^3$.
+
+Ecco altri esempi di complessità temporali, dalla minore alla maggiore:
+\begin{itemize}
+    \item $O(1)$, tempo costante
+    \item $O(log \space \phantom{.} n)$, tempo logaritmico
+    \item $O(n)$, tempo lineare
+    \item $O(n^2)$, tempo quadratico
+    \item $O(n^3)$, tempo cubico
+\end{itemize}
+\vspace{0.5cm}
+Facciamo un esempio pratico, scriviamo un algoritmo per sommare i primi $n$ numeri interi partendo da $1$. Il metodo più intuitivo sarebbe di rappresentarlo come:
+$$
+    S_n = \sum_{i=1}^{n} i = 1 + 2 + ... + n
+$$
+questo algoritmo richiede di svolgere $n-1$ addizioni, la sua complessità temporale è quindi $O(n)$, ossia lineare.
+
+Proviamo ora a trovare un algoritmo che faccia la medesima cosa ma con una complessità minore, consideriamo
+$$
+    S_n = \frac{n(n+1)}{2}
+$$
+la cui validità può essere dimostrata matematicamente per induzione, non verrà dimostrata in questo documento.
+
+Proviamo ad applicare questa seconda formula ai casi $n=100$ e $n=1000$:
+\begin{align*}
+    S_{100} &= \frac{100+101}{2} = 5050 \\ \\
+    S_{1000} &= \frac{1000+10001}{2} = 500500
+\end{align*}
+Notiamo che, in entrambi i casi, abbiamo dovuto effettuare solo tre operazioni distinte (un'addizione, una moltiplicazione e una divisione). Possiamo concludere che la complessità temporale di questo algoritmo è $O(1)$, ossia è costante e \textbf{indipendente dal valore di n}, a prescindere da quanto esso sia grande, preferiamo quindi usare il secondo algoritmo rispetto al primo.
+\end{document}
