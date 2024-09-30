@@ -1,0 +1,75 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+\subsection{Addizione}
+Le addizioni con numeri binari sono leggermente diverse da quella alla quale siamo abituati, solitamente svolgiamo questa operazione in colonna, ecco un esempio pratico:
+$$
+    \begin{array}{r}
+        \color{red}\phantom{1}11\phantom{1} \\ % riporti
+            1011 \\
+        +   0011 \\
+            \hline
+            \color{red}1110 \\
+    \end{array}
+$$
+In generale valgono le seguenti regole per l'addizione tra due numeri binari, $A$ e $B$ sono i due addendi mentre $C$ è il carry (riporto) e $R$ il risultato:\\
+\begin{center}
+    \begin{tabular}{cc|cc}
+    A & B & C & R \\ \hline
+    0 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 1 \\
+    1 & 0 & 0 & 1 \\
+    1 & 1 & 1 & 0
+    \end{tabular}
+\end{center}
+
+\subsubsection{Overflow}
+Potrebbe succedere che il risultato di un operazione binaria sia più grande del numero massimo permesso dal numero di bit degli addendi, in questo caso si ha un problema di overflow:
+$$
+    \begin{array}{r}
+        \color{blue}111\phantom{1}\phantom{1} \\ % riporti
+            1011 \\
+        +   0110 \\
+            \hline
+            \color{red}1\color{blue}0001 \\
+    \end{array}
+$$
+Infatti con 4 bit si possono rappresentare i numeri nell'intervallo $\lbrack 0;2^4-1 \rbrack = \lbrack 0;15 \rbrack $. Nel caso di prima il numero $10001_2 = 17_{10}$ è fuori dal range di numeri che si possono rappresentare.
+
+\subsection{Segno/modulo}
+La rappresentazione in segno/modulo ci permette di rappresentare i numeri binari negativi.
+In questa rappresentazione il MSB rappresenta il segno del numero (\textbf{0 = positivo} e \textbf{1 = negativo}).
+Di fatto stiamo sacrificando un bit per rappresentare il segno, il range di numeri che è possibile rappresentare con $N-bit$ quindi cambia, diventando $\lbrack -(2^{N-1}-1), 2^{N-1}-1 \rbrack$.
+
+\textbf{Nota:} Utilizzando questa rappresentazione non è possibile sommare due numeri, il risultato non sarà esatto.
+
+\subsection{Complemento a due}
+Il complimento a due ci permette di ovviare a questo problema, esso consiste nell'invertire tutte le cifre di un numero binario e sommare ad esso 1, ad esempio per ottenere $-3$, considerando $3_{10}=0011_2$ i passaggi saranno:
+$$
+    \begin{array}{r}
+            1100 \\
+        +   0001 \\
+            \hline
+            1101 \\
+    \end{array}
+$$
+Anche in questo caso il range di numeri che si possono rappresentare cambia diventando \\ $\lbrack -(2^{N-1}), 2^{N-1}-1 \rbrack$.
+\textbf{Nota:} in questo caso il bit più significativo non rappresenta solo il segno, fa anche parte della cifra, in questo modo è possibile
+sommare due cifre mantenendo il sistema coerente. Per convertire un numero negativo in positivo il procedimento è lo stesso, basta rifare il comlemento a due.
+
+\subsubsection{Estensione del segno}
+Ci sono due tipi di estensioni:
+\begin{itemize}
+    \item Estensione di segno, il MSB viene copiato per tutti i bit aggiuntivi \\
+    Ad esempio $3=\color{red}0\color{black}011$ diventa $\color{red}0000\color{black}0011$ \\
+    Oppure $-5 = \color{red}1\color{black}011$ diventa $\color{red}1111\color{black}1011$ \\
+    \textbf{Nota:} possiamo eseguire il complemento a due sul numero esteso per far quadrare i conti \\
+    $1111 1011 \rightarrow 0000 0100 + 1 = 0000 0101 = 5$
+
+    \item Estensione di zero, vengono aggiunti zeri fino al numero di bit desiderato \\
+    Ad esempio $1011_2 = 5_{10}$ diventa $\color{red}0000\color{black}1011_2 = 11_{10}$
+\end{itemize}
+
+
+
+
+\end{document}
