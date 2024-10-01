@@ -202,6 +202,7 @@ Abbiamo capito quindi che per determinare una combinazione lineare tra più vett
     \includegraphics[width=1\textwidth]{../images/casGeogebra.png}
 \end{figure}
 
+\pagebreak
 \subsubsection{Generare tutti i vettori di $\mathbb{R}^3$}
 \textbf{Teorema:} se $\vec{u},\vec{v},\vec{w} \in \mathbb{R}^3$ sono non complanari (non appartengono allo stesso piano e quindi nessuno di essi si può  esprimere come combinazione lineare degli altri due), allora è possibile esprimere qualunque vettore $\vec{z}$ di $\mathbb{R}^3$ come combinazione lineare di $\vec{u},\vec{v},\vec{w}$ in un \underline{unico} modo.
 
@@ -212,4 +213,80 @@ In questo caso, prendendo sempre due vettori non paralleli, possiamo generare un
 \end{figure}
 
 In questo caso per generare tutti i vettori possibili occorrono 3 vettori, possono essere vettori qualsiasi purché non siano complanari, ovvero nessuno di essi si possa esprimere come combinazione lineare degli altri (non si hanno vettori paralleli). Avendo tre vettori $\vec{w}$, $\vec{u}$ e $\vec{v}$, se $\vec{w}$ non si può esprimere come combinazione lineare degli altri due significa che abbiamo tre vettori validi per poter generare ogni vettore in $\mathbb{R}^3$.
+
+\vspace{1.5cm}
+\subsection{Dipendenza e indipendenza lineare}
+Per generare i vettori di $mathbb{R}^n$ sono necessari e sufficienti $n$ vettori, purché nessuno di essi si possa esprimere come combinazione lineare degli altri.
+
+\subsubsection{Definizione}
+Si dice che i vettori $x_1,...,x_m \in \mathbb{R}^n$ sono \textbf{linearmente indipendenti (LI)} se nessuno di essi si può esprimere come combinazione lineare degli altri,
+altrimenti si dicono \textbf{linearmente dipendenti (LD)}.
+
+Possiamo dire quindi che una \textbf{base} di $\mathbb{R}^n$ è formata da $n$ vettori \textbf{linealmente indipendenti}.
+Una \textbf{base} è una lista di vettori LI che generano $\mathbb{R}^n$.
+
+\subsubsection{Teorema}
+Per evitare di verificare che ogni vettore di un sistema non si possa esprimere come CL degli altri, possiamo usare un'altra strada.
+
+\textbf{Teorema}. I vettori $x_1...x_m \in \mathbb{R}^n$ sono \textbf{linearmente indipendenti} se e solo se l'unica loro combinazione lineare
+che dà il vettore nullo $0$ è la combinazione banale:
+$$
+    0x_1 + ... + 0x_m = 0
+$$
+In questo modo occorre risolvere un solo sistema lineare \textbf{omogeneo} (con i termini noti tutti nulli).
+
+Se ad esempio vogliamo stabilire se i vettori $a \begin{pmatrix}1 \\ 2 \\ 3 \end{pmatrix}, b \begin{pmatrix}4 \\ 5 \\ 6 \end{pmatrix}, c \begin{pmatrix}7 \\ 8 \\ 9 \end{pmatrix}$
+sono LI o LD, diventa:
+$$
+    h \begin{pmatrix}
+        1 \\
+        2 \\
+        3
+    \end{pmatrix}
+    +j \begin{pmatrix}
+        4 \\
+        5 \\
+        6
+    \end{pmatrix}
+    +k \begin{pmatrix}
+        7 \\
+        8 \\
+        9
+    \end{pmatrix}
+    = \begin{pmatrix}
+       0 \\
+       0 \\
+       0
+    \end{pmatrix}
+$$
+
+\vspace{1cm}
+\subsubsection{Interpretare i risultati}
+Una volta che abbiamo il sistema, possiamo inserirlo in Geogebra utilizzando la funzione \textbf{Risolvi} con la sintassi vista nel capitolo
+scorso. Se l'unico valore possibile dei coefficienti è $0$ (ammette \textbf{solo} la soluzione banale), allora i vettori sono LI.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{../images/casLI.png}
+\end{figure}
+
+In caso contrario, significa che i vettori sono LD.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{../images/casLD.png}
+\end{figure}
+
+\vspace{1cm}
+Facciamo un esempio più pratico per notare qualche altro dettaglio. Proviamo a stabilire se i vettori $a \begin{pmatrix}1 \\ 2 \\ 3 \\ 4 \end{pmatrix}, b \begin{pmatrix}5 \\ 6 \\ 7 \\ 8\end{pmatrix}, c \begin{pmatrix}9 \\ 10 \\ 11 \\ 12 \end{pmatrix}, d \begin{pmatrix}13 \\ 14 \\ 15 \\ 16 \end{pmatrix}$
+sono LI o LD.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../images/casLD2.png}
+\end{figure}
+Notiamo per prima cosa che i vettori sono LD. Inoltre ci sono due variabili libere ($k=k, l=l$), ciò significa che ci sono solo
+2 vettori LI ($4-2 = 2$), per verificare quali dovremmo vedere i singoli casi. Infine sappiamo che $a,b,c,d$ generano un \textbf{sottospazio}
+di $\mathbb{R}^4$ di \textbf{dimensione} $2$.
+
+In generale, $k$ vettori LI non nulli di $\mathbb{R}^n$ generano un \textbf{sottospazio} di \textbf{dimensione} $k$.
+
 \end{document}
