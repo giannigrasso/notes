@@ -1,0 +1,28 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+La Potenza viene espressa in \textit{Watt} e il suo consumo si divide in:
+\begin{itemize}
+    \item Consumo dinamico
+    \item Consumo statico
+\end{itemize}
+
+Il consumo dinamico rappresenta il consumo durante l'utilizzo di un dispositivo e vale:
+$$
+    P_{dynamic} = \frac{1}{2} \cdot C \cdot V_{DD}^2 \cdot f
+$$
+Dove $C$ rappresenta la capacità, $V_{DD}$ la tensione e $f$ la frequenza. Quest'ultima inoltre
+è il paramentro più facile da controllare quando vogliamo alzare o abbassare il livello di consumo dinamico.
+
+Per quanto riguarda il consumo statico, esso rappresenta il consumo "a riposo" ed è determinato come:
+$$
+    P_{static} = I_{DD} \cdot V_{DD}
+$$
+
+E ovviamente il consumo totale è calcolato dalla somma degli altri due:
+\begin{align*}
+    P_{total} =& P_{dynamic} + P_{static} \\
+    =&\frac{1}{2} \cdot C \cdot V_{DD}^2 \cdot f \phantom{-} + \phantom{-} I_{DD} \cdot V_{DD}
+\end{align*}
+    
+
+\end{document}
