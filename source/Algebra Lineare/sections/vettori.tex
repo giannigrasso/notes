@@ -94,6 +94,8 @@ Si chiama combinazione lineare dei vettori $x_1,x_2,...,x_m$ con coefficienti (n
 $$
     c_1x_1+c_2x_2+...+c_mx_m
 $$
+Il risultato di questa somma apparterrà allo spazio vettoriale di partenza.
+\vspace{1cm}
 
 Facciamo un semplice esempio per rendere meglio l'idea, mettiamo caso che dati due vettori $u=[5, -8, -5]$ e $v=[-6, 5, -6]$, vogliamo trovare la combinazione lineare $2u-3v$:
 $$
@@ -137,38 +139,37 @@ Ora da un punto di vista geometrico cerchiamo di esprimere $AE$ e $AF$ come comb
     \end{tikzpicture}
 \end{center}
 
-\textbf{Nota:} se due vettori sono paralleli (cioè hanno la stessa direzione) la loro somma sarà anch'essa parallela ai vettori originali. Possiamo quindi determinare
-se due vettori sono paralleli ($x \parallel y$ ) stabilendo se esiste un numero reale $k$ tale che $y=kx$. 0 è parallelo a qualunque vettore.
-
-Se al contrario due vettori non sono paralleli, la loro somma darà come risultato un vettore con una direzione diversa rispetto ad entrambi.
-
+%\textbf{Nota:} se due vettori sono paralleli (cioè hanno la stessa direzione) la loro somma sarà anch'essa parallela ai vettori originali. Possiamo quindi determinare
+%se due vettori sono paralleli ($x \parallel y$ ) stabilendo se esiste un numero reale $k$ tale che $y=kx$. 0 è parallelo a qualunque vettore.
+%Se al contrario due vettori non sono paralleli, la loro somma darà come risultato un vettore con una direzione diversa rispetto ad entrambi.
+\vspace{1.5cm}
 \subsubsection{Generare tutti i vettori di $\mathbb{R}^2$}
 \textbf{Teorema:} se $\vec{u},\vec{v} \in \mathbb{R}^2$ sono non paralleli, allora è possibile esprimere qualunque vettore $\vec{w}$ di $\mathbb{R}^2$ come combinazione lineare di $\vec{u}$ e $\vec{v}$ in un \underline{unico} modo.
 
-Per rappresentare un vettore come combinazione lineare di altri due vettori occorre creare un sistema e separare le componenti:
-
+Per rappresentare un vettore come combinazione lineare di altri due vettori occorre creare un sistema e separare le componenti.
 \textbf{Esempio:} esprimere $\vec{w}= \lbrack6,4\rbrack$ come CL dei vettori $\vec{u}=\lbrack3,1\rbrack$ e $\vec{v}=\lbrack1,2\rbrack$
 $$
-    h \begin{pmatrix}
+    \begin{pmatrix}
+        6 \\
+        4
+    \end{pmatrix}
+    = h \begin{pmatrix}
         3 \\
         1
     \end{pmatrix}
     +k \begin{pmatrix}
         1 \\
         2
-    \end{pmatrix}
-    = \begin{pmatrix}
-       6 \\
-       4
     \end{pmatrix} \rightarrow
     \begin{cases}
-        3h+k=6 \\
-        h+2k=4
+        6 = 3h+k \\
+        4 = h+2k
     \end{cases}
 $$
-Questa dimostrazione vale solo se $\vec{u}$ e $\vec{v}$ non sono paralleli, in caso contrario ($\vec{u} || \vec{v}$) il risultato del sistema risulterà impossibile.
-
+Un sistema del genere avrà una soluzione solo se $\vec{u}$ e $\vec{v}$ non sono paralleli, in caso contrario ($\vec{u} || \vec{v}$) il risultato del sistema risulterà impossibile.
+In questo caso, sviluppando il sistema troviamo che $h = \frac{8}{5}, k=\frac{6}{5}$.
 \pagebreak
+
 \textbf{Esempio:} esiste una combinazione lineare dei vettori $\vec{u}= \lbrack6,4\rbrack$ e $\vec{v}= \lbrack9,6\rbrack$ che dia il vettore $\vec{w}= \lbrack12,10\rbrack$?
 $$
     h \begin{pmatrix}
@@ -189,11 +190,29 @@ $$
     \end{cases}
 $$
 
-Provando a risolvere il sistema si ottiene $8=10$ (il sistema non ammette soluzioni), quindi non è possibile esprimere $\vec{w}= \lbrack12,10\rbrack$ come combinazione lineare dei vettori $\vec{u}= \lbrack6,4\rbrack$ e $\vec{v}= \lbrack9,6\rbrack$, poiché $\vec{u}$ e $\vec{v}$ sono paralleli. Ciò significa che tramite combinazioni lineari di questi due vettori si possono ottenere \textbf{solo} i vettori che hanno la stessa direzione di $\vec{u}$ e $\vec{v}$. Graficamente risulta così:
+Provando a risolvere il sistema si ottiene $8=10$ (il sistema non ammette soluzioni), quindi non è possibile esprimere
+$\vec{w}= \lbrack12,10\rbrack$ come combinazione lineare dei vettori $\vec{u}= \lbrack6,4\rbrack$ e $\vec{v}= \lbrack9,6\rbrack$,
+ciò significa che $\vec{u}$ e $\vec{v}$ \textbf{sono paralleli}. In altre parole combinando linearmente questi due vettori si possono ottenere \textbf{solo} i vettori che hanno la stessa direzione di $\vec{u}$ e $\vec{v}$. Graficamente risulta così:
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{../images/vettoriParalleli.png}
 \end{figure}
+
+\subsubsection{Generare tutti i vettori di $\mathbb{R}^3$}
+\textbf{Teorema:} se $\vec{u},\vec{v},\vec{w} \in \mathbb{R}^3$ sono non complanari (non appartengono allo stesso piano e quindi nessuno di essi si può  esprimere come combinazione lineare degli altri due), allora è possibile esprimere qualunque vettore $\vec{z}$ di $\mathbb{R}^3$ come combinazione lineare di $\vec{u},\vec{v},\vec{w}$ in un \underline{unico} modo.
+
+In questo caso, utilizzando \textbf{due} vettori non paralleli, possiamo generare un piano su $\mathbb{R}^3$, tuttavia in questo caso
+avendo una dimensione 3 e soltanto due vettori, siamo limitati a generare \textbf{solo} i vettori che si trovano sul piano dei due vettori.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.3\textwidth]{../images/combinazioneLineareR3.png}
+\end{figure}
+
+Per generare tutti i vettori possibili occorrono quindi 3 vettori, possono essere vettori qualsiasi purché non siano complanari, ovvero nessuno di essi si possa esprimere come combinazione lineare degli altri.
+
+%Avendo tre vettori $\vec{w}$, $\vec{u}$ e $\vec{v}$, se $\vec{w}$ non si può esprimere come combinazione lineare degli altri due significa che abbiamo tre vettori validi per poter generare ogni vettore in $\mathbb{R}^3$.
+
+In generale, per generare i vettori di $\mathbb{R}^n$ sono necessari e sufficienti $n$ vettori, purché nessuno di essi si possa esprimere come combinazione lineare degli altri.
 
 \subsubsection{CAS Geogebra}
 Abbiamo capito quindi che per determinare una combinazione lineare tra più vettori è importante riuscire a creare un sistema di equazioni. Per quanto riguarda però la risoluzione possiamo usare il CAS di Geogebra, tramite lo strumento Risolvi gli passiamo come parametri la lista di equazioni e le variabili di riferimento.
@@ -201,32 +220,15 @@ Abbiamo capito quindi che per determinare una combinazione lineare tra più vett
     \centering
     \includegraphics[width=1\textwidth]{../images/casGeogebra.png}
 \end{figure}
-
 \pagebreak
-\subsubsection{Generare tutti i vettori di $\mathbb{R}^3$}
-\textbf{Teorema:} se $\vec{u},\vec{v},\vec{w} \in \mathbb{R}^3$ sono non complanari (non appartengono allo stesso piano e quindi nessuno di essi si può  esprimere come combinazione lineare degli altri due), allora è possibile esprimere qualunque vettore $\vec{z}$ di $\mathbb{R}^3$ come combinazione lineare di $\vec{u},\vec{v},\vec{w}$ in un \underline{unico} modo.
 
-In questo caso, prendendo sempre due vettori non paralleli, possiamo generare un piano su $\mathbb{R}^3$, tuttavia vale lo stesso discorso di prima, in questo caso si possono generare \textbf{solo} i vettori che si trovano su quel piano:
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.4\textwidth]{../images/combinazioneLineareR3.png}
-\end{figure}
-
-In questo caso per generare tutti i vettori possibili occorrono 3 vettori, possono essere vettori qualsiasi purché non siano complanari, ovvero nessuno di essi si possa esprimere come combinazione lineare degli altri (non si hanno vettori paralleli). Avendo tre vettori $\vec{w}$, $\vec{u}$ e $\vec{v}$, se $\vec{w}$ non si può esprimere come combinazione lineare degli altri due significa che abbiamo tre vettori validi per poter generare ogni vettore in $\mathbb{R}^3$.
-
-\vspace{1.5cm}
 \subsection{Dipendenza e indipendenza lineare}
-Per generare i vettori di $\mathbb{R}^n$ sono necessari e sufficienti $n$ vettori, purché nessuno di essi si possa esprimere come combinazione lineare degli altri.
-
-\subsubsection{Definizione}
 Si dice che i vettori $x_1,...,x_m \in \mathbb{R}^n$ sono \textbf{linearmente indipendenti (LI)} se nessuno di essi si può esprimere come combinazione lineare degli altri,
 altrimenti si dicono \textbf{linearmente dipendenti (LD)}.
 
 Possiamo dire quindi che una \textbf{base} di $\mathbb{R}^n$ è formata da $n$ vettori \textbf{linealmente indipendenti}.
 Una \textbf{base} è una lista di vettori LI che generano $\mathbb{R}^n$.
-
-\subsubsection{Teorema}
-Per evitare di verificare che ogni vettore di un sistema non si possa esprimere come CL degli altri, possiamo usare un'altra strada.
+\vspace{1cm}
 
 \textbf{Teorema}. I vettori $x_1...x_m \in \mathbb{R}^n$ sono \textbf{linearmente indipendenti} se e solo se l'unica loro combinazione lineare
 che dà il vettore nullo $0$ è la combinazione banale:
