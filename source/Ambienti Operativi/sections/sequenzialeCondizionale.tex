@@ -1,24 +1,22 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 È possibile eseguire sequenzialmente una serie di comandi inserendoli in un unica linea di comando, ogni istruzione deve essere
-separata da un \textbf{;}. Ad esempio:
-\begin{lstlisting}[language=bash, frame=l]
+separata da un \code{;}. Ad esempio:
+\begin{lstlisting}[style=bash]
     utente@host:~$ echo "ciao"; echo "mondo"; pwd
     ciao
     mondo
     /home/utente
 \end{lstlisting}
-\vspace{1.5cm}
 
-È anche possibile eseguire più comandi inserendoli sulla stessa linea di comando legandoli insieme con un operazione booleana, \textbf{OR ||}
-oppure \textbf{AND \&\&}. Ad esempio:
-\begin{lstlisting}[language=bash, frame=l]
+È anche possibile eseguire più comandi inserendoli sulla stessa linea di comando legandoli insieme con un operazione booleana, \code{OR ||}
+oppure \code{AND \&\&}. Ad esempio:
+\begin{lstlisting}[style=bash]
     utente@host:~$ cat miofile || date || ls
 \end{lstlisting}
 L'eseuzione termina quando uno dei comandi (eseguiti da sinistra verso destra) termina correttamente senza errori.
-\vspace{1cm}
 
-\begin{lstlisting}[language=bash, frame=l]
+\begin{lstlisting}[style=bash]
     utente@host:~$ cat miofile && date && ls
 \end{lstlisting}
 L'esecuzione termina quando uno dei comandi (eseguiti da sinistra verso destra) produce un errore.

@@ -64,8 +64,17 @@
     \fi
 }
 
+\newcommand{\code}[1]{\texttt{#1}}
 
 % listings
+\lstdefinestyle{bash}{
+    language=bash, % Imposta il linguaggio
+    basicstyle=\ttfamily, % Font monospace, dimensione piccola
+    keywordstyle=\color{blue}, % Colore per le parole chiave
+    commentstyle=\color{green!70!black}, % Colore per i commenti
+    stringstyle=\color{red}, % Colore per le stringhe
+    breaklines=true, % Attiva l'andamento delle righe
+}
 
 \lstdefinestyle{boxed} {
     basicstyle=\ttfamily,

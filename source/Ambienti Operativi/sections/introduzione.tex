@@ -22,14 +22,14 @@ Dobbiamo poi fare distinzione tra documenti testuali semplici e documenti strutt
 SSH, ovvero Secure Shell, è un protocollo di rete crittografico che ci consente di utilizzare servizi di rete in modo sicuro su una rete non protetta. Le sue applicazioni più comuni sono il login remoto e l'esecuzione da riga di comando, noi useremo il SSH per connetterci ad un server didattico.
 
 Per connetterci al server da macOS/Linux dobbiamo digitare a terminale il seguente comando:
-\begin{lstlisting}[language=bash]
-ssh linux1-didattica.supsi.ch -l nome.cognome@supsi.ch
+\begin{lstlisting}[style=bash]
+    utente@host:~$ ssh linux1-didattica.supsi.ch -l nome.cognome@supsi.ch
 \end{lstlisting}
 
 \subsection{Struttura di un filesystem}
-Il filesystem di un sistema ha una struttura ad albero, la radice è la cartella \textbf{root (/)}, tutte le altre directory sono sottostanti ad essa.
+Il filesystem di un sistema ha una struttura ad albero, la radice è la cartella \code{root (/)}, tutte le altre directory sono sottostanti ad essa.
 
-Tra le directory principali che ci interessano ci sono \textbf{/home}, cartella che contiene le directory degli utenti locali, e \textbf{/tmp} cartella nella quale risiedono i file temporanei.
+Tra le directory principali che ci interessano ci sono \code{/home}, cartella che contiene le directory degli utenti locali, e \code{/tmp} cartella nella quale risiedono i file temporanei.
 
 Un percorso può essere assoluto o relativo, nel primo caso specifichiamo l'intero percorso di una directory o un file, indipendentemente da dove ci troviamo, mentre nel secondo indichiamo il percorso per raggiungere un file a partire dalla posizione corrente.
 \end{document}

@@ -1,0 +1,67 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+Ecco una lista di comandi utili visti durante il corso:
+\begin{itemize}
+    \item \code{history} \\
+    Stampa la cronologia dei comandi
+    \begin{lstlisting}[style=bash]
+        history
+    \end{lstlisting}
+    \code{ctrl + r} per cercare
+    \item \code{touch} \\
+    Aggiorna la data dell'ultima modifica del file, se il file non esiste ne crea uno
+    \begin{lstlisting}[style=bash]
+        touch filename
+    \end{lstlisting}
+    \item \code{seq} \\
+    Stampa una sequenza di numeri
+    \begin{lstlisting}[style=bash]
+        # inizia da 1 e finisce a 100 (inrementa di 1 di default).
+        seq 1 100 > file.txt
+
+        cat file.txt
+        # 1
+        # 2
+        # ...
+        # 100
+    \end{lstlisting}
+    \item \code{find} \\
+    Cerca dei file secondo i criteri imposti. Argomenti comuni
+    \begin{itemize}
+        \item \code{-name}: il nome dei file
+        \item \code{-iname}: il nome dei file (non case sensitive)
+        \item \code{-user}: il proprietario dei file
+        \item \code{-size}: la dimensione dei file
+        \item \code{-exec}: esegue un comando per ogni file trovato. \code{-exec rm \{\} \textbackslash;}
+    \end{itemize}
+    \begin{lstlisting}[style=bash]
+        # trova i file che finiscono con .jpg e li copia nella cartella /destinazione
+        find / -name '*.jpg' -exec copy {} /destination \;
+    \end{lstlisting}
+    \item \code{wc} \\
+    Conta le parole passate come input
+    \begin{lstlisting}[style=bash]
+        # stampa il numero di linee di file.txt
+        cat file.txt | wc -l
+    \end{lstlisting}
+    \item \code{tr} \\
+    Sostituisce una parola con un altra
+    \begin{lstlisting}[style=bash]
+        # sostituisce tutte le lettere `a` con `b`
+        cat file.txt | tr a b
+    \end{lstlisting}
+    \item \code{cut} \\
+    Estrae porzioni di testo, utilizzando delimitatori o posizioni specifiche.
+    \begin{lstlisting}[style=bash]
+        # estrae il secondo campo di testo dividendo il file a ogni `;`
+        cat file.txt | cut -d ";" -f2
+    \end{lstlisting}
+    \item \code{grep} \\
+    Filtra le righe di un file
+    \begin{lstlisting}[style=bash]
+        # Visualizza le righe di file.txt che contengono la parola `ciao`
+        grep ciao file.txt
+    \end{lstlisting}
+\end{itemize}
+
+\end{document}

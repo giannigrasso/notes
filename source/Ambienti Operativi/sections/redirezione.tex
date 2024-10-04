@@ -2,43 +2,36 @@
 \begin{document}
 Sui sistemi Unix i programmi hanno accesso a tre stream di input e output.
 \begin{itemize}
-    \item \textbf{stdin} (standard input) [0], input dalla tastiera
-    \item \textbf{stdout} (standard output) [1], output su schermo
-    \item \textbf{stderr} (standard error) [2], output degli errori su schermo
+    \item \code{stdin} \code{[0]}, input dalla tastiera
+    \begin{lstlisting}[style=bash]
+        > cat > greetings.txt
+    \end{lstlisting}
+    \item \code{stdout} \code{[1]}, output su schermo
+    \begin{lstlisting}[style=bash]
+        cat file > /dev/null
+    \end{lstlisting}
+    \item \code{stderr} \code{[2]}, output degli errori su schermo
+    \begin{lstlisting}[style=bash]
+        cat nonexistingfile 2> errors.txt
+    \end{lstlisting}
 \end{itemize}
+\textbf{Nota:} Di default \code{1>} non include gli errori e sovrascrive il file di destinazione. Per fare l'append usare \code{>>}.
 
-Possiamo redirezionare gli input e output di default. Per redirezionare l'input useremo il carattere '<', per l'output '\textbf{1>}' (sovrascrive)
-o '\textbf{1>\phantom{}>}' (append) e per gli errori '\textbf{2>}'. Ad esempio:
-
-\begin{lstlisting}[language=bash, frame=l]
-    utente@host:~$ cat leggi.txt >> aggiungi.txt
+È anche possibile redirezionare stdout e stderr insieme, tuttavia non è buona pratica farlo in un file come nell'esempio sottostante:
+\begin{lstlisting}[style=bash]
+    cat file nonexisting >& results.txt
 \end{lstlisting}
-Redireziona lo stdout del comando \textit{cat} sul file \textit{aggiungi.txt}.
 
-Per redirezionare sia lo stdout che lo stderr si usa '\textbf{>\&}'. Inoltre è possibile redirezionare un qualsiasi output a \textbf{/dev/null} per non visualizzarlo.
-
-\subsection{Pipe}
+\subsubsection{Pipe}
 La pipe è un buffer che permette di passare lo stdout di un comando come stdin di un altro, da sinistra a destra. Il seguente comando 
-ad esempio prende l'input del comando \textit{cat} e lo passa al comando \textit{grep}:
-\begin{lstlisting}[language=bash, frame=l]
-    utente@host:~$ cat A.txt| grep "ABC"
+ad esempio prende l'input del comando \code{cat} e lo passa al comando \code{grep}:
+\begin{lstlisting}[style=bash]
+    cat A.txt| grep "ABC"
 \end{lstlisting}
 
-È possibile redirezionare lo stderr nello stdout, in questo caso possiamo usare '\textbf{2>\&1}':
-\begin{lstlisting}[language=bash, frame=l]
-    utente@host:~$ ls nonesistente 2>&1 >/dev/null | grep impossibile
+È possibile redirezionare lo stderr \textbf{nello} stdout, in questo caso possiamo usare '\code{2>\&1}':
+\begin{lstlisting}[style=bash]
+    ls nonesistente 2>&1 >/dev/null | grep impossibile
 \end{lstlisting}
-
-Ecco una lista di comandi utili:
-\begin{itemize}
-    \item head, restituisce le prime $n$ rghe di un file
-    \item tail, restituisce le ultime $n$ rghe di un file
-    \item tr, sostituisce una lettera con un altra all'interno di un file
-    \item cut, estrae i primi $n$ caratteri di ogni linea di un file
-    \item grep, visualizza tutto ciò che contiene una determinata stringa
-    \item sort, ordina il contenuto dell'output, di default in ordine alfabetico
-    \item wc, conta il numero di righe di un output
-    \item uniq, stampa a schermo le righe di un output senza duplicati (righe adiacenti uguali)
-\end{itemize}
 
 \end{document}
