@@ -1,6 +1,7 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
-\subsection{Valutazione di un polinomio}
+\subsection{Algoritmo di Horner}
+\subsubsection{Valutazione di un polinomio}
 Per capire Horner dobbiamo prima fare degli step intermedi che dimostrano la sua effettiva utilità, consideriamo un generico polinomio di terzo grado:
 $$
     P(x) = a_3x^3 + a_2x^2 + a_1x + a_0
@@ -42,7 +43,7 @@ $$
 che corrisponde all'\textbf{algoritmo di Horner}, che consente di risolvere un polinomio mediante $n$ moltiplicazioni e $n$ addizioni (come visto prima). In totale sono quindi necessarie $2n$ operazioni e ciò corrisponde a una complessita temporale \textbf{lineare}, ossia $O(n)$.
 
 \pagebreak
-\subsection{Applicazione}
+\subsubsection{Applicazione}
 L'algoritmo di Horner è utile per passare da un sistema di numerazione qualsiasi al sistema decimale (ad esempio da binario a decimale).
 
 Se consideriamo ad esempio il numero $3152$, possiamo scriverlo come:
@@ -79,7 +80,65 @@ Che utilizzando l'algoritmo di Horner diventa:
     &= 15 \cdot 3 + 1 = 46_{10}
 \end{align*}
 
-\subsection{Horner inverso}
+\subsubsection{Horner inverso}
 L'algoritmo di Horner inverso, o \textbf{algoritmo del modulo}, consente invece di passare da base 10 a base $b$.
+
+\pagebreak
+\subsection{Complemento a due}
+Vogliamo ora ampliare i numeri rappresentabili, grazie all'\textbf{algoritmo di Horner} infatti possiamo rappresentare solo i numeri
+naturali $\mathbb{N} = \{ 0, 1, 2, 3, 4, ... \} $. Ci serve quindi un modo per rappresentare anche i numeri interi
+$\mathbb{Z} = \{ ..., -3, -2, -1, 0, 1, 2, 3, ... \} $, ovvero il complemento a due. Gli insiemi interi positivi e negativi sono indicati
+rispettivamente con $\mathbb{Z^+}, \mathbb{Z^-}$.
+
+Il complemento a due è in grado di rappresentare i numeri interi tramite l'uso delle seguenti regole:
+\begin{enumerate}
+    \item il primo bit indica sempre il segno del numero (\textbf{0 positivo} e \textbf{1 negativo})
+    \item se il primo bit è 0, il numero viene letto in base 10 usando $Horner(bit)$
+    \item se il primo bit è 1, il numero viene letto in base 10 come $-(2^n - Horner(bit))$
+\end{enumerate}
+
+Facciamo alcuni esempi per quanto riguarda l'ultimo caso:
+\begin{align*}
+    &1100_2 \text{, il primo bit è 1, segno negativo}\\
+    &Horner(1100) = (1 \cdot 2 + 1)\cdot 2 + ... = 12 \\
+    &-(2^4 - Horner(1100)) = -(16-12) = -4_{10}
+\end{align*}
+un altro esempio:
+\begin{align*}
+    &1011 = 11_{10}\\
+    &-(2^4 - 11) = -(16-11) = -5
+\end{align*}
+
+Consideriamo ora anche l'\textbf{algoritmo di Horner inverso}, che ci permette di passare da un numero intero alla sua rappresentazione
+in binario. Abbiamo quindi due casi distinti:
+\begin{enumerate}
+    \item se il numero $x \in \mathbb{Z}_0^+$, applichiamo l'algoritmo inverso
+    \item se il numero $x \in \mathbb{Z}_0^-$, dobbiamo risolvere la seguente equazione per i \underline{bit}: \begin{align*}
+        &x = -(2^n - Horner(bit)) \\
+        \Longleftrightarrow &x = -2^n + Horner(bit) \\
+        \Longleftrightarrow &Horner(bit) = 2^n + x \\
+        \Longleftrightarrow &bit = invHorner(2^n+x)
+    \end{align*}
+\end{enumerate}
+dove $invHorner$ indica l'inverso dell'algoritmo di Horner e $n$ il numero di bit da cui è composta la memoria.
+
+\subsubsection{Interpretare le consegne}
+Durante lo svolgimento degli esercizi verranno menzionati spesso \code{short int} e \code{unsigned short int} o simili. Possiamo 
+descriverli in questo modo:
+\begin{itemize}
+    \item \textbf{Complemento a due}
+    \begin{itemize}
+        \item short int 16 bit
+        \item int 32 bit
+        \item long int 64 bit
+    \end{itemize}
+    \item \textbf{Unsigned (come numero naturale)}
+    \begin{itemize}
+        \item short int 16 bit
+        \item int 32 bit
+        \item long int 64 bit
+    \end{itemize}
+\end{itemize}
+
 
 \end{document}
