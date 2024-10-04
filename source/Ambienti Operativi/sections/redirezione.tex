@@ -11,7 +11,7 @@ Possiamo redirezionare gli input e output di default. Per redirezionare l'input 
 o '\textbf{1>\phantom{}>}' (append) e per gli errori '\textbf{2>}'. Ad esempio:
 
 \begin{lstlisting}[language=bash, frame=l]
-    cat leggi.txt >> aggiungi.txt
+    utente@host:~$ cat leggi.txt >> aggiungi.txt
 \end{lstlisting}
 Redireziona lo stdout del comando \textit{cat} sul file \textit{aggiungi.txt}.
 
@@ -21,12 +21,12 @@ Per redirezionare sia lo stdout che lo stderr si usa '\textbf{>\&}'. Inoltre è 
 La pipe è un buffer che permette di passare lo stdout di un comando come stdin di un altro, da sinistra a destra. Il seguente comando 
 ad esempio prende l'input del comando \textit{cat} e lo passa al comando \textit{grep}:
 \begin{lstlisting}[language=bash, frame=l]
-    cat A.txt| grep "ABC"
+    utente@host:~$ cat A.txt| grep "ABC"
 \end{lstlisting}
 
 È possibile redirezionare lo stderr nello stdout, in questo caso possiamo usare '\textbf{2>\&1}':
 \begin{lstlisting}[language=bash, frame=l]
-    ls nonesistente 2>&1 >/dev/null | grep impossibile
+    utente@host:~$ ls nonesistente 2>&1 >/dev/null | grep impossibile
 \end{lstlisting}
 
 Ecco una lista di comandi utili:
@@ -36,6 +36,9 @@ Ecco una lista di comandi utili:
     \item tr, sostituisce una lettera con un altra all'interno di un file
     \item cut, estrae i primi $n$ caratteri di ogni linea di un file
     \item grep, visualizza tutto ciò che contiene una determinata stringa
+    \item sort, ordina il contenuto dell'output, di default in ordine alfabetico
+    \item wc, conta il numero di righe di un output
+    \item uniq, stampa a schermo le righe di un output senza duplicati (righe adiacenti uguali)
 \end{itemize}
 
 \end{document}
