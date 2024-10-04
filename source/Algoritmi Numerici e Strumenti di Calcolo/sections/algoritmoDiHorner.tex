@@ -37,7 +37,7 @@ la cui correttezza può essere verificata sviluppando i conti. Notiamo che il nu
 
 Questa formula può essere generalizzata ad un polinomio di grado $n$:
 $$
-    P(x_0) = (((a_nx_0 + a_{n-1})x_0 + a_{n-2}) + ...)x_0 + a_0
+    P(x_0) = (((a_nx_0 + a_{n-1})x_0 + a_{n-2}) \cdot ...)x_0 + a_0
 $$
 che corrisponde all'\textbf{algoritmo di Horner}, che consente di risolvere un polinomio mediante $n$ moltiplicazioni e $n$ addizioni (come visto prima). In totale sono quindi necessarie $2n$ operazioni e ciò corrisponde a una complessita temporale \textbf{lineare}, ossia $O(n)$.
 
@@ -58,7 +58,7 @@ dove $a_0,...,a_n$ corrisponde alle cifre del numero.
 
 Possiamo notare che la scrittura riportata è analoga a quella vista nella dimostrazione, che possiamo quindi riscrivere il numero come:
 $$
-    x = (((a_n \cdot 10 + a_{n-1}) \cdot 10 + a_{n-2}) + ...) \cdot 10 + a_0
+    x = (((a_n \cdot 10 + a_{n-1}) \cdot 10 + a_{n-2}) \cdot ...) \cdot 10 + a_0
 $$
 
 Per quanto riguarda gli altri sistemi numerici vale lo stesso discorso, consideriamo quindi un numero in una qualsiasi base $b$ e scriviamolo nel corrispondente in base 10:
