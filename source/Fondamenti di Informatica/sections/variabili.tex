@@ -1,0 +1,23 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+Ad ogni variabile è associata una zona di memoria. Le variabili vanno dichiarate fornendo il tipo di dato e il nome.
+Una variabile è accessibile dal momento in cui viene dichiarata \textbf{fino alla fine del blocco in cui è contenuta}. Ecco un esempio:
+\begin{lstlisting}[style=java]
+    int nomeVariabile; //non inizializzata
+    int x = 20 + 30; //inizializzata
+
+    int y = 1, z; //dichiara e assegna y e dichiara z
+
+    double d = z / (y * 1.75); //svloge prima l'espressione e poi l'assegnazione
+\end{lstlisting}
+\vspace{0.5cm}
+\textbf{Nota:} prima di poter leggere il valore di una variabile, essa deve essere inizializzata, in caso contrario il codice non compila.
+\begin{lstlisting}[style=java]
+    int b;
+    if (condizione) {
+        b = 0;
+    }
+    System.out.println("b = " + b); //non compila. b potrebbe non essere inizializzata
+\end{lstlisting}
+
+\end{document}

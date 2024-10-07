@@ -1,0 +1,41 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+Java è un linguaggio di programmazione \textbf{orientato agli oggetti} progettato per essere il più possibile indipendente dalla
+piattaforma di esecuzione.
+
+\subsection{Compilazione ed esecuzione}
+\begin{itemize}
+    \item \textbf{JRE}, Java Runtime Environment, è un ambiente che permette di eseguire applicazioni java, contiene la
+    \textit{Java Virtual Machine} (\textbf{JVM}) e le Java APIs.
+    \item \textbf{JDK}, Java Development Kit, una collezione di tools per la programmazione in Java: compilatore, debugger, eccetera.
+    Esso comprende una versione della JRE al suo interno
+\end{itemize}
+
+
+Nel codice sorgente ogni programma Java è rappresentato da \textbf{una classe}. Il nome del file \textbf{deve} coincidere con quello
+della classe.
+
+Ecco la struttura di base di un programma Java:
+\begin{lstlisting}[style=java]
+    /**
+    * Esempio di programma.
+    */
+    public class NomeClasse {
+        public static void main(String[] args) {
+            //codice del programma
+        }
+    }
+\end{lstlisting}
+
+\subsection{Alcune definizioni}
+\begin{itemize}
+    \item \textbf{Letterali}, un letterale è la rappresentazione di un qualsiasi valore di tipo primitivo, stringa o \code{null}, in altre
+    parole tutto ciò che potrebbe essere assegnato ad una variabile
+    \item \textbf{Espressioni}, un espresione è un costrutto (porzione di codice) che quando viene elaborato assume un singolo valore.
+    Essa può essere composta da variabili, operatori, letterali, separatori e invocazioni di funzioni. Il suo tipo di dato dipende dagli
+    elementi che la compongono
+    \item \textbf{Istruzioni}, l'istruzione è l'unità di esecuzione di Java. Ogni istruzione deve essere completata con il punto e virgola
+    (\code{;}), fatta eccezione per le istruzioni di controllo di flusso del codice (\code{if}, \code{while}, ...)
+\end{itemize}
+
+\end{document}

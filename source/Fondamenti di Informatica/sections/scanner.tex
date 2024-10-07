@@ -1,0 +1,60 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+La classe /code{Scanner} è un semplice scanner di testo che può analizzare tipi primitivi e stringhe.
+Per utilizzare uno scanner è necessario importare la classe, istanziarlo e \textbf{chiuderlo}:
+\begin{lstlisting}[style=java]
+    import java.util.Scanner; //importa la classe
+
+    public class EsempioHasNextInt {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in); //istanzia uno scanner
+
+            System.out.print("Inserisci un numero intero: ");
+            String x = scanner.next(); //utilizza lo scanner
+
+            scanner.close(); //chiude lo scanner
+        }
+    }
+
+\end{lstlisting}
+
+Quando utilizziamo uno scanner per leggere un numero, premendo invio lasciamo \code{\textbackslash n} nel buffer, in questo modo  quando
+poi proviamo a leggere una stringa, verrà letto soltanto il valore lasciato nel buffer. Per evitare questo ogni volta che leggiamo
+un valore numerico con uno scanner, chiamiamo successivamente il metodo \code{nextLine()}, in modo che svuoti il buffer prima della
+lettura della stringa.
+\begin{lstlisting}[style=java]
+    Scanner scanner = new Scanner(System.in);
+
+    // Lettura di un numero intero
+    System.out.print("Inserisci un numero intero: ");
+    int numero = scanner.nextInt(); // Legge il numero, lascia '\n' nel buffer
+
+    // Dopo aver letto un numero con nextInt(), rimane il carattere '\n' nel buffer.
+    // Il metodo nextLine() viene utilizzato qui per consumare quel '\n' ed evitare
+    // problemi nella successiva lettura di una stringa.
+    scanner.nextLine();
+
+    // Lettura di una stringa
+    System.out.print("Inserisci una stringa: ");
+    String stringa = scanner.nextLine();
+\end{lstlisting}
+
+Per verificare che l'utente inserisca un valore del tipo aspettato quando usiamo uno scanner possiamo usare:
+\begin{lstlisting}[style=java]
+    System.out.print("Inserisci un numero intero: ");
+
+    // Ciclo che continua fino a quando non viene inserito un numero intero valido
+    while (!scanner.hasNextInt()) { // hasNextInt() controlla se il prossimo input
+                                    // è un numero intero, ma non consuma il valore
+        System.out.print("Input non valido. Inserisci un numero intero: ");
+        scanner.nextLine(); // Scarta l'input non valido
+    }
+
+    // Una volta ottenuto un intero, lo memorizziamo e lo stampiamo
+    int number = scanner.nextInt();
+\end{lstlisting}
+
+
+
+
+\end{document}
