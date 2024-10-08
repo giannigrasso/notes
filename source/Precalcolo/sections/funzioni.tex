@@ -169,10 +169,29 @@ $$
 \end{figure}
 $(a;b) \in G(f) \Leftrightarrow b = f(a)$, Un punto appartiene al grafico se e solo se $b=f(a)$
 
-\textbf{Nota:} possiamo verificare se una funzione esiste dal suo grafico controllando che per ogni $x$ ci sia \textbf{soltanto} una $y$.
-\vspace{1cm}
 
+\textbf{Osservazione:}
+\begin{center}
+    \begin{tikzpicture}
+        % Disegna la griglia
+        \draw[very thin, gray] (-0.5,-0.5) grid (4.5,4.5);
+        
+        % Disegna assi
+        \draw[thick,->] (-1,0) -- (4,0) node[right] {$x$}; % Asse x
+        \draw[thick,->] (0,-1) -- (0,4) node[above] {$y$}; % Asse y
 
+        \draw[domain=0:3,smooth,variable=\x,blue] plot ({\x},{sqrt(\x) + 2});
+        \draw[domain=0:3,smooth,variable=\x,blue] plot ({\x},{-sqrt(\x) + 2});
+
+        \draw[red, thick] (1,-1) -- (1,4);  % Linea tratteggiata a x = 1
+
+        \fill[red] (1, 1) circle (2pt);  % Punto a (1, 1) con raggio di 5pt
+        \fill[red] (1, 3) circle (2pt);  % Punto a (1, 1) con raggio di 5pt
+    \end{tikzpicture} \hspace{2cm}
+\end{center}
+Questo grafico non rappresenta una funzione, per alcuni argomenti ci sono più immagini.
+
+\pagebreak
 \subsection{Operazioni con le funzioni}
 \subsubsection{Somma - Sottrazione}
 Esempio:
@@ -183,6 +202,49 @@ Esempio:
     \Rightarrow D(f+g)&=\lbrack-1;+\infty\lbrack \backslash \{0\} \\
     &=D(f)\cap D(g)
 \end{align*}
+\begin{center}
+    \begin{tikzpicture}        
+        % Disegna assi
+        \draw[thick,->] (-5,0) -- (5,0) node[right] {}; % Asse x
+
+        \node at (-5.5, 0) {$f\phantom{+g}$};
+
+        \node at (-1, 0.3) {-1};
+        \fill[blue] (-1, 0) circle (2pt);  % Punto a (1, 1) con raggio di 5pt
+
+        % Disegna la parte colorata in blu
+        \draw[blue, thick] (-1, 0) -- (5, 0); % Parte blu della retta
+    \end{tikzpicture}
+\end{center}
+\begin{center}
+    \begin{tikzpicture}        
+        % Disegna assi
+        \draw[thick,->] (-5,0) -- (5,0) node[right] {}; % Asse x
+
+        \node at (-5.5, 0) {$g\phantom{+g}$};
+
+        \node at (0, 0.3) {0};
+        \draw[blue] (0, 0) circle (2pt);  % Punto a (1, 1) con raggio di 5pt
+
+        % Disegna la parte colorata in blu
+        \draw[blue, thick] (0, 0) -- (5, 0); % Parte blu della retta
+    \end{tikzpicture}
+\end{center}
+\begin{center}
+    \begin{tikzpicture}        
+        % Disegna assi
+        \draw[thick,->] (-5,0) -- (5,0) node[right] {}; % Asse x
+
+        \node at (-5.5, 0) {$f\pm g$};
+
+        \node at (-1, 0.3) {-1};
+        \fill[red] (-1, 0) circle (2pt);  % Punto a (1, 1) con raggio di 5pt
+        \draw[red] (0, 0) circle (2pt);  % Punto a (1, 1) con raggio di 5pt
+
+        % Disegna la parte colorata in blu
+        \draw[red, thick] (-1, 0) -- (5, 0); % Parte blu della retta
+    \end{tikzpicture}
+\end{center}
 
 In generale
 \begin{align*}
@@ -191,23 +253,81 @@ In generale
 \end{align*}
 
 \subsubsection{Prodotto}
+Esempio:
+\begin{align*}
+    f(x) = \sqrt{x + 1} \Rightarrow& D(f) = [-1; +\infty[ \\
+    g(x) = x \Rightarrow& D(g) = \mathbb{R} \\
+    \Rightarrow (f \cdot g)(x) =& x \cdot \sqrt{x + 1} \\
+    \Rightarrow D(f \cdot g) =& [-1;+\infty[
+\end{align*}
+
+In generale
 \begin{align*}
     (f \cdot g)(x) = f(x) \cdot g(x) \\
     D(f \cdot g) = D(f) \cap D(g)  
 \end{align*}
 
 \subsubsection{Divisione}
-La divisione non è solo l'intersezione tra le due funzioni.
-
-\pagebreak
-\subsection{Composizione di funzioni}
-SCHEMA
-
+Esempio:
 \begin{align*}
-    f: B \longrightarrow C \\
-    g: A \longrightarrow B \\
+    f(x) = \frac{1}{x} \Rightarrow& D(f) = \mathbb{R}^* \\
+    g(x) = \sqrt{x + 2} \Rightarrow& D(g) = [-2;+\infty[ \\
+    \Rightarrow \frac{f}{g}(x) =& \frac{1/x}{\sqrt{x + 2}} = \frac{1}{x \cdot \sqrt{x + 2}} \\
+    D(\frac{f}{g}) =& \color{red}]\color{black}-2;+\infty[\backslash \{0\}
 \end{align*}
-La funzione
+
+In generale
+\begin{align*}
+    (\frac{f}{g})(x) =& \frac{f(x)}{g(x)} \\
+    D(\frac{f}{g}) =& D(f) \cap D(g) \backslash \{x \in D(g) | g(x) = 0\}
+\end{align*}
+\textbf{Nota:} Il dominio non è dato solo dall'intersezione, nell'esempio sopra va anche escluso il -2 che non si può dividere per 0.
+
+\subsubsection{Composizione di funzioni}
+\begin{center}
+    \begin{tikzpicture}
+        %sets A and B
+        \draw (-5,0) ellipse (1 and 2);
+        \draw (0,0) ellipse (1 and 2);
+        \draw (5,0) ellipse (1 and 2);
+        \node at (-5, 2.3) {$A$};
+        \node at (0,2.3) {$B$};
+        \node at (5,2.3) {$C$};
+
+        
+        %set A
+        \node at (-5,0) {\textcolor{blue}{$\bullet$}};
+        \node at (-5.2, 0.2) {\textcolor{blue}{$x$}};
+        
+        %set B
+        \node at (0,0) {\textcolor{blue}{$\bullet$}};
+        \node at (0.2,0.3) {\textcolor{blue}{$g(x)$}};
+
+        %set C
+        \node at (5,0) {\textcolor{blue}{$\bullet$}};
+        \node at (5.2,0.3) {\textcolor{blue}{$f(g(x))$}};
+        
+        %arrows
+        \draw[->, blue] (-4.8,0) -- (-0.2,0);
+        \draw[->, blue] (0.2,0) -- (4.8,0);
+
+        \draw[->, blue] (-4, 1) .. controls (-3, 2) and (-2,2).. (-1, 1); % Freccia curva
+        \node at (-2.5,2) {\textcolor{blue}{$g$}};
+        \draw[->, blue] (1, 1) .. controls (2, 2) and (3,2).. (4, 1); % Freccia curva
+        \node at (2.5,2) {\textcolor{blue}{$f$}};
+
+        \draw[->, red] (-5, 0) .. controls (-4, -2) and (5,-2).. (5, 0); % Freccia curva
+    \end{tikzpicture}
+\end{center}
+
+\vspace{1cm}
+Date due funzioni
+\begin{align*}
+    f: B \longrightarrow& C \\
+    g: A \longrightarrow& B \\
+    \text{la funzione}
+\end{align*}
+la funzione
 \begin{align*}
     f \circ  g: A \longrightarrow& C \\
     x \longrightarrow& (f \circ  g)(x) = f(g(x))
