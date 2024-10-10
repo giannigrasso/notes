@@ -106,4 +106,143 @@ In questo caso usiamo un sistema di riferimento dove $g$ è \textbf{negativo}.
     \item $V = -V_0$
 \end{itemize}
 
+\begin{center}
+    \begin{tikzpicture}
+        % Disegna la griglia
+        \draw[very thin, gray] (-0.5,-0.5) grid (3.5,3.5);
+        
+        % Disegna assi
+        \draw[thick,->] (-1,0) -- (3,0) node[right] {$t$}; % Asse x
+        \draw[thick,->] (0,-1) -- (0,3) node[above] {$y$}; % Asse y
+
+        % Disegna la funzione y = 3x - 2
+        \draw[domain=0:3,smooth,variable=\x,blue,thick] 
+        plot (\x, {-(\x)^2+3*(\x)+0}) node[above] {};
+
+        \fill[blue] (3, 0) circle (2pt) node[below] {$\frac{2V_0}{g}$}; % Pallino spesso
+        \fill[blue] (1.5, 0) circle (2pt) node[below] {$\frac{V_0}{g}$}; % Pallino spesso
+        \fill[blue] (0, 0) circle (2pt) node[below left] {$0$}; % Pallino spesso
+
+
+    \end{tikzpicture} \hspace{0.3cm}
+    \begin{tikzpicture}
+        % Disegna la griglia
+        \draw[very thin, gray] (-0.5,-0.5) grid (3.5,3.5);
+        
+        % Disegna assi
+        \draw[thick,->] (-1,0) -- (3,0) node[right] {$t$}; % Asse x
+        \draw[thick,->] (0,-1) -- (0,3) node[above] {$V$}; % Asse y
+
+        % Disegna la funzione y = 3x - 2
+        \draw[domain=0:3,smooth,variable=\x,blue,thick] 
+        plot (\x, {-(\x)+2}) node[above] {};
+
+        \fill[blue] (0, 2) circle (2pt) node[left] {$V_0$}; % Pallino spesso
+        \fill[blue] (2, 0) circle (2pt) node[below] {}; % Pallino spesso
+        \fill[blue] (3, -1) circle (2pt) node[below] {}; % Pallino spesso
+
+        \node[blue] at (0, -1) [left] {$-V_0$}; % Etichetta sotto
+        \node[blue] at (3, 0) [above] {$t$}; % Etichetta sotto
+    \end{tikzpicture} \hspace{0.3cm}
+    \begin{tikzpicture}
+        % Disegna la griglia
+        \draw[very thin, gray] (-0.5,-0.5) grid (3.5,3.5);
+        
+        % Disegna assi
+        \draw[thick,->] (-1,0) -- (3,0) node[right] {$t$}; % Asse x
+        \draw[thick,->] (0,-1) -- (0,3) node[above] {$a$}; % Asse y
+
+        % Disegna la funzione y = 3x - 2
+        \draw[domain=0:3,smooth,variable=\x,blue,thick] 
+        plot (\x, {-1}) node[left] {};
+
+        \fill[blue] (0, -1) circle (2pt) node[left] {$-9.81$}; % Pallino spesso
+    \end{tikzpicture}
+\end{center}
+\textbf{Nota:} Nel primo grafico il tempo di salita è uguale al tempo di discesa (in un sistema senza attrito e quindi non nella vita reale).
+
+\subsubsection{Considerazioni sui grafici}
+$$
+    x = \color{blue}x_0 \color{black}+ \color{green}V_{tot} \color{black}+ \color{red}\frac{1}{2}a\color{black}t^2\longleftrightarrow y=\color{red}a\color{black}x^2+bx+\color{blue}c\color{black}
+$$
+\color{blue}$x_0$ \color{black}è il termine noto, \color{green}$V_{tot}$\color{black} è la pendenza della retta tangente nel punto iniziale,
+\color{red}$\frac{1}{2}a$ \color{black} è la concavità.
+
+Ecco alcuni esempi:
+\begin{center}
+    \begin{tikzpicture}
+        % Disegna la griglia
+        \draw[very thin, gray] (-0.5,-0.5) grid (5.5,5.5);
+        
+        % Disegna assi
+        \draw[thick,->] (-1,0) -- (5,0) node[right] {$t$}; % Asse x
+        \draw[thick,->] (0,-1) -- (0,5) node[above] {$x$}; % Asse y
+
+        % Disegna la funzione y = 3x - 2
+        \draw[domain=0:4,smooth,variable=\x,blue,thick] 
+        plot (\x, {-(\x)^2+3*(\x)+2}) node[above] {};
+
+        \fill[blue] (0, 2) circle (2pt) node[below right] {$x_0$}; % Pallino spesso
+
+        \node[blue] at (4, 4) {$a<0$}; % Etichetta sotto
+        \node[blue] at (4, 3) {$V_0>0$}; % Etichetta sotto
+    \end{tikzpicture} \hspace{1cm}
+    \begin{tikzpicture}
+        % Disegna la griglia
+        \draw[very thin, gray] (-0.5,-0.5) grid (5.5,5.5);
+        
+        % Disegna assi
+        \draw[thick,->] (-1,0) -- (5,0) node[right] {$t$}; % Asse x
+        \draw[thick,->] (0,-1) -- (0,5) node[above] {$x$}; % Asse y
+
+        % Disegna la funzione y = 3x - 2
+        \draw[domain=0:4,smooth,variable=\x,blue,thick] 
+        plot (\x, {0.2*(\x^2)-0.5}) node[above] {};
+
+        \fill[blue] (0, -0.5) circle (2pt) node[below right] {$x_0$}; % Pallino spesso
+
+        \node[blue] at (4, 1.5) {$a>0$}; % Etichetta sotto
+        \node[blue] at (4, 0.5) {$V_0=0$}; % Etichetta sotto
+    \end{tikzpicture}
+\end{center}
+
+\begin{center}
+    \begin{tikzpicture}
+        % Disegna la griglia
+        \draw[very thin, gray] (-0.5,-0.5) grid (5.5,5.5);
+        
+        % Disegna assi
+        \draw[thick,->] (-1,0) -- (5,0) node[right] {$t$}; % Asse x
+        \draw[thick,->] (0,-1) -- (0,5) node[above] {$x$}; % Asse y
+
+        % Disegna la funzione y = 3x - 2
+        \draw[domain=0:4,smooth,variable=\x,blue,thick] 
+        plot (\x, {0.2*(\x^2)}) node[above] {};
+
+        \fill[blue] (0, 0) circle (2pt) node[above left] {$x_0$}; % Pallino spesso
+
+        \node[blue] at (4, 2) {$x_0=0$}; % Etichetta sotto
+        \node[blue] at (4, 1.25) {$V_0>0$}; % Etichetta sotto
+        \node[blue] at (4, 0.5) {$a>0$}; % Etichetta sotto
+
+    \end{tikzpicture} \hspace{1cm}
+    \begin{tikzpicture}
+        % Disegna la griglia
+        \draw[very thin, gray] (-0.5,-0.5) grid (5.5,5.5);
+        
+        % Disegna assi
+        \draw[thick,->] (-1,0) -- (5,0) node[right] {$t$}; % Asse x
+        \draw[thick,->] (0,-1) -- (0,5) node[above] {$x$}; % Asse y
+
+        % Disegna la funzione y = 3x - 2
+        \draw[domain=0:3,smooth,variable=\x,blue,thick] 
+        plot (\x, {(\x-1)^2 -1}) node[above] {};
+
+        \fill[blue] (0, 0) circle (2pt) node[below left] {$x_0$}; % Pallino spesso
+
+        \node[blue] at (4, 2) {$x_0=0$}; % Etichetta sotto
+        \node[blue] at (4, 1.25) {$V_0<0$}; % Etichetta sotto
+        \node[blue] at (4, 0.5) {$a>0$}; % Etichetta sotto
+    \end{tikzpicture} 
+\end{center}
 \end{document}
