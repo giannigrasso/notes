@@ -1,0 +1,69 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+Un circuito logico è composto da $n$ input e $m$ output (non c'è solo un ouput come per le porte logiche). Inoltre al suo interno
+possonoo esserci dei circuiti, ogni circuito è un elemento.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/circuitoLogico.png}
+\end{figure}
+
+Esistono due tipi di circuiti logici:
+\begin{itemize}
+    \item \textbf{Logica combinazionale (CL)}, non ha memoria, l'output è determinato solo dagli input
+    \item \textbf{Logica sequenziale}, ha memoria, l'output è determinato anche dagli input precedenti
+\end{itemize}
+
+Per ora concentriamoci sui circuiti con \textbf{logica combinazionale}, ogni elemento di questo tipo di circuito deve essere
+anch'esso combinazionale. Inoltre ogni nodo di un circuito combinazionale è collegato sia a un ingresso che a un uscita.
+
+\subsection{Algebra booleana}
+Alcune definizioni:
+\begin{itemize}
+    \item \textbf{Complemento}: una viariabile "negata", $\bar{A}, \bar{B}, \bar{C}$
+    \item \textbf{Letterale}: una viariabile o il suo complemento, $A, \bar{A}, B, \bar{B}, C, \bar{C}$
+    \item \textbf{Implicante}: il prodotto di due o più letterali, $AB\bar{C}, A\bar{B}, BC$
+    \item \textbf{Minterm}: un implicante che inlcude \underline{tutte} le variabili di input esattamente una volta, $AB\bar{C}, A\bar{B}\bar{C}, ABC$
+    \item \textbf{Maxterm}: la \underline{somma} che include \underline{tutte} le variabili di input esattamente una volta, $(A+\bar{B}+C), (\bar{A}+B+\bar{C}), (\bar{A}+\bar{B}+C)$
+\end{itemize}
+\textbf{Nota:} $(A+\bar{B}+\bar{A}+C)$ non è \textbf{Maxterm} perchè l'input $A$ c'è due volte, anche se una di queste è negato.
+
+Di seguito è riportata una tabella con tutti i teoremi e gli assiomi che possiamo utilizzare:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1\textwidth]{images/teoremiAlgebraBool.png}
+    \caption{Proprietà e teoremi dell'algebra di Boole}
+\end{figure}
+
+\pagebreak
+\subsubsection{Somma dei prodotti}
+La \textbf{SOP} (Sum-of-Products) è una forma nella quale possiamo scrivere una qualsiasi equazione booleana utilizzando i \textbf{minterm}.
+$$
+    Y = F(A,B) = \sum_{i = 0}^{n}(mi)\phantom{--};n=2^N -1 
+$$
+Guardiamo un esempio per capire come utilizzarala:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/sop.png}
+\end{figure}
+
+In questo caso
+$$
+    Y = F(A,B) = \bar{A}B + AB = \sum(1,3)
+$$
+
+\subsubsection{Prodotto delle somme}
+La \textbf{POS} (product-of-Sums) è una forma nella quale possiamo scrivere qualsiasi equazione booleana utilizzando i \textbf{maxterm}.
+$$
+    Y = F(A,B) = \prod_{i = 0}^{n}(Mi)\phantom{--};n=2^N  -1
+$$
+Guardiamo un esempio per capire come utilizzarala:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/pos.png}
+\end{figure}
+
+In questo caso
+$$
+    Y = F(A,B) = (A+B)(\bar{A}+B) = \prod(0,2)
+$$
+\end{document}
