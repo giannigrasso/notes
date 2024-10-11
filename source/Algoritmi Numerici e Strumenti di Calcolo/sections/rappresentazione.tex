@@ -140,5 +140,35 @@ descriverli in questo modo:
     \end{itemize}
 \end{itemize}
 
+\subsection{Horner su numeri razionali}
+Vogliamo ampliare ulteriormente i numeri rappresentabili. Fino ad ora pssiamo rappresentare tutti i numeri interi 
+$\mathbb{Z}={...,-3,-2,-1,0,+1,+2,+3,...}$. Ci serve quindi un modo per rappresentare i numeri razionali, per farlo possiamo utilzare 
+\textbf{Horner} sulla parte decimale di un numero.
+
+Per convertire numeri razionali da base $10$ a base $b$ possiamo usare sempre l'algoritmo di Horner, con alcuni accorgimenti:
+\begin{enumerate}
+    \item separiamo la parte intera dalla parte decimale
+    \item per la parte intera, usiamo l'algoritmo di Horner normalmente
+    \item per la parte decimale, usiamo una versione modificata che utilizza la funzione \code{INT()} per calcolare la parte intera di un numero
+\end{enumerate}
+
+Ecco un esempio da base $10$ a base \color{blue}$2$\color{black}:
+\begin{align*}
+    int(0.1875 * \color{blue}2\color{black}) =& 0 (MSB)\\
+    int(0.375 * \color{blue}2\color{black}) =& 0\\
+    int(0.75 * \color{blue}2\color{black}) =& 1\\
+    int(0.5 * \color{blue}2\color{black}) =& 1 (LSB) \\
+    \Rightarrow 0.1875_{10} =& 0.0011_2
+\end{align*}
+
+e uno da base 2 a base 10, in questo caso si parte dal \textit{LSB}:
+\begin{align*}
+    \color{blue}1\color{black} \longrightarrow \frac{0}{2} + \color{blue}1\color{black} =& \color{red}1\\
+    \color{green}1\color{black} \longrightarrow \frac{\color{red}1\color{black}}{2} + \color{green}1\color{green} =& \color{orange}1.5\color{black}\\
+    \color{magenta}0\color{black} \longrightarrow \frac{\color{orange}1.5\color{black}}{2} + \color{magenta}0\color{black} =& \color{violet}0.75\color{black}\\
+    \color{cyan}0\color{black} \longrightarrow \frac{\color{violet}0.75\color{black}}{2} + \color{cyan}0\color{black} =& 0.375\\
+    \longrightarrow& \frac{0.375}{2} = 0.1875\\
+\end{align*}
+
 
 \end{document}
