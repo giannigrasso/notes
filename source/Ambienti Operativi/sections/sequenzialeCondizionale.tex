@@ -12,12 +12,12 @@ separata da un \code{;}. Ad esempio:
 È anche possibile eseguire più comandi inserendoli sulla stessa linea di comando legandoli insieme con un operazione booleana, \code{OR ||}
 oppure \code{AND \&\&}. Ad esempio:
 \begin{lstlisting}[style=bash]
-    utente@host:~$ cat miofile || date || ls
+    cat miofile || date || ls
 \end{lstlisting}
 L'eseuzione termina quando uno dei comandi (eseguiti da sinistra verso destra) termina correttamente senza errori.
 
 \begin{lstlisting}[style=bash]
-    utente@host:~$ cat miofile && date && ls
+    cat miofile && date && ls
 \end{lstlisting}
 L'esecuzione termina quando uno dei comandi (eseguiti da sinistra verso destra) produce un errore.
 \end{document}

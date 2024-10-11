@@ -10,12 +10,12 @@ Il Globbin consiste nell'utilizzare un pattern con uno o più caratteri "wildcar
 
 Ad esempio per trovare tutti i file che iniziano con un numero e hanno un estensione di tre caratteri:
 \begin{lstlisting}[style=bash]
-    utente@host:~$ find [0-9]*.???
+    find [0-9]*.???
 \end{lstlisting}
 
 Facciamo un esempio più complicato, il seguente codice trova tutti i file che hanno un nome che inizia con un numero compreso tra 10 e 20.
 \begin{lstlisting}[style=bash]
-    utente@host:~$ ls 1[0-9][^0-9]* 20[^0-9]*
+    ls 1[0-9][^0-9]* 20[^0-9]*
 \end{lstlisting}
 Notiamo innanzitutto che il comando \textit{ls} prende due intervalli, il primo trova i file che iniziano con il carattere 1 e che hanno
 come secondo carattere un numero da 0 a 9, il terzo carattere però non può essere un altro numero, in questo modo troviamo tutti i file
