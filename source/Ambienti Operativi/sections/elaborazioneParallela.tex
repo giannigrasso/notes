@@ -1,0 +1,51 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+Per visualizzare ed elencare i processi presenti sul sistema possiamo usare:
+\begin{itemize}
+    \item \code{ps}
+    \item \code{top}
+    \item \code{htop}
+\end{itemize}
+
+\vspace{1cm}
+Le informazioni sulla cpu a disposizione sono presenti nel file \code{/proc/cpuinfo}.
+
+\vspace{1cm}
+Per vedere le informazioni relative al tempo di un comando possiamo usare il comando \code{time} prima dell'effettivo comando.
+
+\vspace{1cm}
+\subsubsection{Approccio manuale}
+Con il comando \code{split} possiamo dividere un file in $n$ file in base al numero di linee che esso contiene. Ad esempio:
+\begin{lstlisting}[style=bash]
+    $ wc -l file.tsv
+    9804311 file.tsv #Il numero di righe del file
+    
+    $ split -l 4902155 file.tsv #Separa il file ogni 4902155 righe (la metà), verranno creati due file
+\end{lstlisting}
+
+\subsubsection{GNU Parallel}
+Il comando \code{parallel} ci permette di eseguire un comando per ogni riga di un file e lo fa in modo parallelo. Funziona in modo simile
+al comando \code{exec} con \code{find}.
+
+Il comando \code{parallel} riceve lo \code{stdin} e lo passa al comando successivo, è utile con comandi che funzionano con lo \code{stdin},
+come ad esempio \code{rm} o \code{touch}. Facciamo qualche esempio:
+\begin{lstlisting}[style=bash]
+    cat lista | parallel rm {}
+
+    cat lista | parallel echo {} "Riga"
+\end{lstlisting}
+
+\vspace{1cm}
+Si può anche specificare quante righe alla volta usare come parametro, ad esempio:
+\begin{lstlisting}[style=bash]
+    cat lista | parallel -n 2 echo "Ciao {1} mondo {2}"
+\end{lstlisting}
+
+\vspace{1cm}
+Infine, possiamo usare il comando \code{--pipe} per passare le righe tramite pipe. Questo è utile solo quando vogliamo eseguire operazioni
+con più righe alla volta:
+\begin{lstlisting}[style=bash]
+    cat lista | parallel --pipe -n2 wc -l
+\end{lstlisting}
+
+\end{document}
