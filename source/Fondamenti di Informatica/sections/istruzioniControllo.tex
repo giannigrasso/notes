@@ -1,0 +1,129 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+\subsection{Switch}
+Ci sono due sintassi per l'istruzione \code{switch} in Java:
+\begin{itemize}
+    \item \begin{lstlisting}[style=java]
+        switch (espressione) {
+            case valore1:
+                ...;
+                break;
+            case valore2:
+                ...;
+                break;
+            case valore3:
+                ...;
+                break;
+            default:
+                ...;
+        }
+    \end{lstlisting}
+    \textbf{Nota:} L'opzione \code{default} è opzionale. Se non è presente il \code{break}, il programma continuerà al \code{case} sucessivo,
+    \underline{anche se la condizione non è soddisfatta}.
+
+    È anche possibile concatenare più \code{case} su una sola linea se la condizione è la stessa:
+    \begin{lstlisting}[style=java]
+        switch (espressione) {
+            case valore4: case valore6: case valore9:
+                ...;
+                break;
+            case valore2:
+                ...;
+                break;
+            default:
+                ...;
+        }
+    \end{lstlisting}
+
+    \item \begin{lstlisting}[style=java]
+        switch (espressione) {
+            case valore1 -> {
+                ...;
+            }
+            case valore2 -> {
+                ...;
+            }
+            case default -> {
+                ...;
+            }
+        }
+    \end{lstlisting}
+    \textbf{Nota:} questa versione non necessita dei \code{break}, impedisce il \code{fall-trough}
+
+    \vspace{0.5cm}
+    Analogamente all'esempio di prima possiamo fare:
+    \begin{lstlisting}[style=java]
+        switch (espressione) {
+            case valore1, valore2, valore3 -> ...;
+            case valore4, valore5, valore6 -> ...;
+            default -> ...;
+        }
+    \end{lstlisting}
+    \textbf{Nota:} per assegnare un valore quando si utilizzano i blocchi di codice dobbiamo usare la keyword \code{yield}.
+    Se vogliamo assegnare un valore di default dobbiamo utilizzarlo per forza.
+\end{itemize}
+
+\pagebreak
+Gli \code{switch} funzionano con:
+\begin{itemize}
+    \item \code{char}
+    \item \code{byte}
+    \item \code{short}
+    \item \code{int}
+    \item \code{String}
+\end{itemize}
+\textbf{Nota:} non funziona con valori decimali come ad esempio \code{double}.
+
+\vspace{1cm}
+\subsection{Operatore terniario}
+Detto anceh \code{inline if}, restituisce il primo valore se la condizione è vera mentre restituisce il secondo se la condizione è falsa:
+\begin{lstlisting}[style=java]
+    condizione ? valoreSeVero : valoreSeFalso
+\end{lstlisting}
+
+Ad esempio:
+\begin{lstlisting}[style=java]
+    if (n % 2 == 0) {
+        prossimo = n / 2;
+    } else {
+        prossimo = 3 * n + 1;
+    }
+
+    // sono uguali
+    prossimo = (n % 2 == 0) ? (n / 2) : (3 * n + 1);
+\end{lstlisting}
+
+\vspace{1cm}
+\subsection{Ciclo \code{for}}
+\begin{lstlisting}[style=java]
+    for (inizializzazione; condizione; aggiornamento) {
+        seqIstruzioni;
+    }
+\end{lstlisting}
+\textbf{Nota:} nessuno dei parametri del ciclo \code{for} (\code{inizializzazione; condizione; aggiornamento}) è obbligatorio.
+
+È anche possibile utilizzare più variabili o condizioni:
+\begin{lstlisting}[style=java]
+    for (double i = 0.5, j = 39; i + j < 40; i++, j--) {
+        ...
+    }
+\end{lstlisting}
+
+\vspace{1cm}
+\subsection{L'istruzione \code{continue} e \code{break}}
+Queste due istruzioni vengono utilizzate all'interno di un ciclo:
+\begin{itemize}
+    \item \code{continue} fa continuare il ciclo dall'iterazione sucessiva
+    \item \code{break} esce dal ciclo corrente
+\end{itemize}
+
+\subsection{L'istruzione \code{do while}}
+Prima esegue le istruzioni (almeno una volta) poi verifica se la condizione è vera.
+\begin{lstlisting}[style=java]
+    do {
+        seqIstruzioni;
+    } while (condizione);
+\end{lstlisting}
+
+
+\end{document}
