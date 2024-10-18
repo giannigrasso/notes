@@ -170,5 +170,29 @@ e uno da base 2 a base 10, in questo caso si parte dal \textit{LSB}:
     \longrightarrow& \frac{0.375}{2} = 0.1875\\
 \end{align*}
 
+\pagebreak
+\subsection{Horner su numeri reali}
+Al punto in cui siamo arrivati ora non abbiamo modo di esprimere delle radici con Horner. Vogliamo dunque ampliare l'insieme razionale
+$\mathbb{Q}$ ed estenderlo a tutti i numeri reali $\mathbb{R}$.
+
+Il problema qui è che i numeri reali sono infiniti, mentre i numeri rappresentabili da un computer sono finiti. Dobbiamo quindi scegliere
+dei \textbf{numeri macchina}, ovvero i valori che possiamo effettivamente rappresentare, i valori che non sono numeri macchina vengono 
+aapprossimati al numero macchina più vicino.
+
+\vspace{1cm}
+Per evitare errori di approssimazioni utilizziamo la notazione scientifica, consideriamo però una notazione scientifica in 
+base $2$ e non in base $10$ come siamo abituati.
+
+Per farlo possiamo usare il formato float, dati $32$ bit esso si basa sulla seguente allocazione:
+\begin{enumerate}
+    \item il primo bit per il segno ($1$ se negativo, $0$ se positivo)
+    \item $8$ bit per l'esponente
+    \item i rimanenti $23$ bit per la mantissa (1.XXX)
+    \item infine la base (della notazione scientifica) è sempre pari a $2$
+\end{enumerate}
+\textbf{Nota:} è \underline{sempre} possibile scrivere il numero da rappresentare nella forma della mantissa.
+
+\textbf{Nota:} il formato float \underline{non} utilizza il complemento a due.
+
 
 \end{document}
