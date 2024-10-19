@@ -66,4 +66,78 @@ In questo caso
 $$
     Y = F(A,B) = (A+B)(\bar{A}+B) = \prod(0,2)
 $$
+
+\pagebreak
+\subsubsection{Teorema di DeMorgan}
+$$
+    Y = \bar{AB} = \bar{A} + \bar{B}
+$$
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/bubbleBackward.png}
+\end{figure}
+
+ma anche
+$$
+    Y = \bar{A+B} = \bar{A} \cdot \bar{B}
+$$
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/bubbleForward.png}
+\end{figure}
+
+Queste operazioni sono anche conosciute come \textbf{bubble pushing}. Esso si applica preferibilmente in modo tale che l'entrata 
+sia uguale all'uscita. In altre parole se l'output è negato preferibilmente vogliamo avere anche l'input sucessivo negato in modo tale 
+che sia facile semplificare l'espressione booleana.
+% Vedi slide 37 se hai dubbi
+
+
+\subsection{Da espressione a porte logiche}
+Per passare da un espressione booleana ad uno schema logico seguiamo degli step:
+\begin{enumerate}
+    \item Scriviamo tutti i letterali presenti nella funzione
+    \item Scriviamo le espressioni intermedie
+    \item Colleghiamo i letterali rendendo le espressioni coerenti
+    \item Scriviamo l'output
+\end{enumerate}
+%Vedi slide 38 se hai dubbi
+
+
+In generale durante la creazione di uno schema seguiamo le seguenti pratiche:
+\begin{itemize}
+    \item I letterali (gli input) vanno scritti sulla sinistra o nella parte superiore
+    \item Gli output vanno scritti sulla destra o sulla parte inferiore
+    \item Il flusso delle porte va da sinistra verso destra
+    \item Le linee devono essere preferibilmente dritte
+    \item La giunzione di più cavi è rappresentata con un punto (i cavi che si intersecano senza punto non sono connessi)
+\end{itemize}
+
+\pagebreak
+\subsection{Circuito prioritario}
+In questo tipo di circuito viene considerato solo il bit più significativo (\textbf{MSB}), in caso di più input con valore \code{1}
+viene considerato per l'output solo quello con MSB maggiore. Nella tabella della verità ci sarà sempre un solo 
+bit con valore \code{1} per riga:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/circuitoPrioritario.png}
+\end{figure}
+
+\subsection{Don't Cares}
+Don't Cares è una tabella della verità che esclude i valori "inutili" di un'altra tabella della verità analoga. Nel caso del circuito
+prioritario la tabella sarebbe:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/dontCares.png}
+\end{figure}
+
+I don't cares vengono usati per semplificare i circuiti, decidiamo noi il criterio ma solitamente li usiamo per situazioni che non
+possono verificarsi.
+% Vedi slide 45 se hai dubbi
+
+
+
+
+
+
+
 \end{document}
