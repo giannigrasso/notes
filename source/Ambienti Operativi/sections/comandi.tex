@@ -13,6 +13,30 @@ Ecco una lista di comandi utili visti durante il corso:
     \begin{lstlisting}[style=bash]
         touch filename
     \end{lstlisting}
+    \item \code{rm} \\
+    Cancella un file o una directory
+    \begin{lstlisting}[style=bash]
+        rm filename #cancella un file
+
+        rmdir directory #cancella una directory vuota
+
+        rm -r #cancella una directory e tutti i file al suo interno
+    \end{lstlisting}
+    \item \code{mv} e \code{cp} \\
+    Rinomina, copia o sposta un file
+    \begin{lstlisting}[style=bash]
+        mv filename newFilename #rinomina un file
+
+        cp filename copyFilename #copia un file
+        cp -r directory copyDirectory #copia una cartella
+
+        mv filename directory #sposta un file
+    \end{lstlisting}
+    \item \code{cat} \\
+    Visualizza il contenuto di un file
+    \begin{lstlisting}[style=bash]
+        cat filename
+    \end{lstlisting}
     \item \code{seq} \\
     Stampa una sequenza di numeri
     \begin{lstlisting}[style=bash]
@@ -38,6 +62,22 @@ Ecco una lista di comandi utili visti durante il corso:
         # trova i file che finiscono con .jpg e li copia nella cartella /destinazione
         find / -name '*.jpg' -exec copy {} /destination \;
     \end{lstlisting}
+    \item \code{head} \\
+    Stampa le prime $n$ righe di un file
+    \begin{lstlisting}[style=bash]
+        head -n 50 filename #stampa le prime 50 righe del file
+
+        cat filename | head -n 1 #stampa la prima riga del file
+
+        cat filename | head -n -3 #stampa tutto il contenuto del file tranne le prime 3 righe
+    \end{lstlisting}
+    \item \code{tail} \\
+    Stampa le ultime $n$ righe di un file
+    \begin{lstlisting}[style=bash]
+        tail -n 50 filename #stampa le ultime 50 righe del file
+
+        cat filename | tail -n 1 #stampa l'ultima riga del file
+    \end{lstlisting}
     \item \code{wc} \\
     Conta le parole passate come input
     \begin{lstlisting}[style=bash]
@@ -62,6 +102,57 @@ Ecco una lista di comandi utili visti durante il corso:
         # Visualizza le righe di file.txt che contengono la parola `ciao`
         grep ciao file.txt
     \end{lstlisting}
+    \item \code{tee} \\
+    Redirige l'output
+    \begin{lstlisting}[style=bash]
+        find / -name "z*" 2>&1 | tee filename #cerca dei file e redirige l'output sia nel file che sullo schermo
+    \end{lstlisting}
+    \item \code{sort} \\
+    Ordina l'output di un comando o visualizza il contenuto ordinato di un file
+    \begin{lstlisting}[style=bash]
+        cat filename | sort #ordine alfabetico
+
+        cat filename | sort -r #ordine alfabetico al contrario
+    \end{lstlisting}
+    \item \code{uniq} \\
+    Stampa a schermo le righe senza duplicati (se le righe sono adiacenti)
+    \begin{lstlisting}[style=bash]
+        cat filename | sort | uniq
+    \end{lstlisting}
+    \item \code{groups} \\
+    Visualizza a quali gruppi appartengo
+    \begin{lstlisting}[style=bash]
+        groups
+    \end{lstlisting}
+    \item \code{newgrp} \\
+    Cambio il mio gruppo corrente
+    \begin{lstlisting}[style=bash]
+        newgrp adm
+    \end{lstlisting}
+    \item \code{chmod} \\
+    Cambia i permessi di un file
+    \begin{lstlisting}[style=bash]
+        chmod u=rw,g=w,o=- filename
+
+        chmod ugo=rw filename
+    \end{lstlisting}
+    \item \code{chown} e \code{chgrp} \\
+    Cambia gruppo o proprietario di un file
+    \begin{lstlisting}[style=bash]
+        chown user filename
+
+        chgrp group filename
+    \end{lstlisting}
+    \item \code{parallel} \\
+    Esegue processi in parallelo
+    \begin{lstlisting}[style=bash]
+        cat filename | parallel rm {} #elimina ogni file che ha il nome uguale ad una riga del file "filename"
+
+        cat filename | parallel -n 2 echo "Riga" #-n 2 prende due righe alla volta
+
+        cat filename | parallel --pipe -n2 wc -l
+    \end{lstlisting}
 \end{itemize}
+\pagebreak
 
 \end{document}
