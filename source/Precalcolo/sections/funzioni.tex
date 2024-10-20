@@ -741,9 +741,22 @@ Il grafico delle funzioni polinomiali è così rappresentato:
     \includegraphics[width=1\textwidth]{images/funzioniPolinomiali.png}
 \end{figure}
 
+Inoltre se consideriamo ad esempio:
+$$
+    f(x) = (x+3)(x+1)^2(x-1)^3(x-3)^4
+$$
+Con zeri: $(-3;0), (-1;0), (1;0), (3;0)$
+
+\begin{itemize}
+    \item Se $(x-x_0)^n$ ha $n$ dispari la funzione \textbf{attraverserà} il punto
+    \item Se $(x-x_0)^n$ ha $n$ pari la funzione \textbf{toccherà} il punto e tornerà indietro
+\end{itemize}
+
+
 \pagebreak
-\subsection{Operazioni con i polinomi}
-\subsubsection{Somma-Differenza}
+\paragraph{Operazioni con i polinomi}
+\subparagraph{Somma-Differenza}
+
 Esempi:
 \begin{align*}
     &(2x^3 + 3x -2) + (3x^3 + 2x^2 -x + 3) \\
@@ -755,7 +768,8 @@ Esempi:
 \end{align*}
 \textbf{Nota:} $grado(f\pm g) = max(grado(f);grado(g))$
 
-\subsubsection{Prodotto}
+\subparagraph{Prodotto}
+
 Esempio:
 \begin{align*}
     &(2x^3 + x - 1) \cdot (3x^2 -2x + 4) \\
@@ -764,7 +778,8 @@ Esempio:
 \end{align*}
 \textbf{Nota:} $grado(f \cdot g) = grado(f) + grado(g)$
 
-\subsubsection{Divisione}
+\subparagraph{Divisione}
+
 Esempio:
 \begin{itemize}
     \item $N(x) = 14x^3 -29x^2 -5$
@@ -773,14 +788,95 @@ Esempio:
 \end{itemize}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1\textwidth]{images/divisionePolinomiale.png}
+    \includegraphics[width=0.8\textwidth]{images/divisionePolinomiale.png}
 \end{figure}
 
+Il risultato si scrive
+$$
+    N(x) = (7x-4) \cdot D(x) -19x -1
+$$
+oppure
+$$
+    \frac{N(x)}{D(x)} = 7x-4 + \frac{-19x-1}{D(x)}
+$$
+
+\pagebreak
+\subsubsection{La funzione razionale fratta}
+Una funzione
 \begin{align*}
-    N(x)& - 7x \cdot D(x) - [ -4 \cdot D(x) ]  = 19x -1 \\
-    N(x)& -(7x-4) D(x) = -19x-1 \\
-    N(x)& - Q(x) \cdot D(x) = R(x) \\
-    \color{blue}N(x)& = Q(x) \cdot D(x) + R(x)
+    f: D(f)& \longrightarrow Im(f) \\
+    x& \longmapsto f(x) = \frac{N(x)}{D(x)}
 \end{align*}
+dove $N(x)$ e $D(x)$ sono polinomi, è detta funzione razionale fratta.
+
+\begin{itemize}
+    \item Se $grado(N(x)) < grado(D(x))$, la frazione $\frac{N(x)}{D(x)}$ è detta \textbf{propria}
+    \item Se $grado(N(x)) \geq  grado(D(x))$, la frazione $\frac{N(x)}{D(x)}$ è detta \textbf{impropria} \\
+    In questo caso possiamo eseguire una divisione polinomiale \\
+    \textbf{Nota:} ricorda che:
+    \begin{align*}
+        \frac{N(x)}{D(x)} = Q(x) + \frac{R(x)}{D(x)}
+    \end{align*}
+\end{itemize}
+
+\paragraph{Funzione omografica}
+L'esempio più semplice di funzione razionale fratta è la funzione omografica. Una funzione
+\begin{align*}
+    f:D(f) \longrightarrow Im(f) \\
+    x \longmapsto f(x) = \frac{ax + b}{cx + d}
+\end{align*}
+dove $a,b,c,d \in \mathbb{R}$ e $c \neq 0$ è detta funzione omografica. Il grafico di una funzione di questo tipo è detto \textbf{iperbole}.
+
+\textbf{Nota:} se $c = 0 \Rightarrow f(x) = \frac{ax+b}{d} = \frac{a}{d}x + \frac{b}{d}$ (è una retta).
+
+\pagebreak
+\paragraph{In generale}
+se $f(x) = \frac{ax + b}{cx + d}$
+\begin{itemize}
+    \item \textbf{$D(f)$:} \begin{align*}
+        cx + d \neq& 0 \\
+        D(f) =&\mathbb{R}\backslash \{ -\frac{d}{c}\} \\
+        \Rightarrow \text{La retta } x =& -\frac{d}{c} \text{ è un asintoto verticale.}
+    \end{align*} 
+    \item \textbf{$Im(f)$:} \begin{align*}
+        Im(f) = D(f^{-1}) = \mathbb{R}\backslash\{ \frac{a}{c}\}
+    \end{align*}
+    \item \textbf{$\cap$ asse $x$:} \begin{align*}
+        f(x) =& 0 \\
+        \frac{ax + b}{cx + d} =& 0 \\
+        x =& -\frac{b}{a}
+    \end{align*}
+\end{itemize}
+\begin{center}
+    \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+        %Shape: Axis 2D [id:dp005291160676745177] 
+        \draw  (204.5,154.25) -- (464,154.25)(334,48) -- (334,249.75) (457,149.25) -- (464,154.25) -- (457,159.25) (329,55) -- (334,48) -- (339,55)  ;
+        %Curve Lines [id:da910684277075739] 
+        \draw    (207.8,206.6) .. controls (232.2,206.6) and (330.49,184.74) .. (377,146.6) .. controls (423.51,108.46) and (446.6,79.4) .. (446.2,51.4) ;
+        %Shape: Circle [id:dp9993648159080415] 
+        \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=1 ] (331.4,171.5) .. controls (331.4,170.01) and (332.61,168.8) .. (334.1,168.8) .. controls (335.59,168.8) and (336.8,170.01) .. (336.8,171.5) .. controls (336.8,172.99) and (335.59,174.2) .. (334.1,174.2) .. controls (332.61,174.2) and (331.4,172.99) .. (331.4,171.5) -- cycle ;
+        %Shape: Circle [id:dp2545453760323153] 
+        \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (363.4,153.9) .. controls (363.4,152.41) and (364.61,151.2) .. (366.1,151.2) .. controls (367.59,151.2) and (368.8,152.41) .. (368.8,153.9) .. controls (368.8,155.39) and (367.59,156.6) .. (366.1,156.6) .. controls (364.61,156.6) and (363.4,155.39) .. (363.4,153.9) -- cycle ;
+        %Straight Lines [id:da5180523753080537] 
+        \draw [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (451.4,51) -- (450.2,228.2) ;
+        %Straight Lines [id:da17361609678654089] 
+        \draw [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ] [dash pattern={on 0.84pt off 2.51pt}]  (194.2,211.4) -- (479.8,209.8) ;
+        %Shape: Circle [id:dp34142742489009315] 
+        \draw  [color={rgb, 255:red, 144; green, 19; blue, 254 }  ,draw opacity=1 ][fill={rgb, 255:red, 144; green, 19; blue, 254 }  ,fill opacity=1 ] (447.4,154.7) .. controls (447.4,153.21) and (448.61,152) .. (450.1,152) .. controls (451.59,152) and (452.8,153.21) .. (452.8,154.7) .. controls (452.8,156.19) and (451.59,157.4) .. (450.1,157.4) .. controls (448.61,157.4) and (447.4,156.19) .. (447.4,154.7) -- cycle ;
+        %Shape: Circle [id:dp323486964304883] 
+        \draw  [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ][fill={rgb, 255:red, 245; green, 166; blue, 35 }  ,fill opacity=1 ] (331.6,210.6) .. controls (331.6,209.11) and (332.81,207.9) .. (334.3,207.9) .. controls (335.79,207.9) and (337,209.11) .. (337,210.6) .. controls (337,212.09) and (335.79,213.3) .. (334.3,213.3) .. controls (332.81,213.3) and (331.6,212.09) .. (331.6,210.6) -- cycle ;
+        %Curve Lines [id:da8040145964283448] 
+        \draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ]   (454.5,251.25) .. controls (456.5,228.25) and (445.5,212.75) .. (497,212.75) ;
+        
+        % Text Node
+        \draw (340.4,169.2) node [anchor=north west][inner sep=0.75pt]    {$\textcolor[rgb]{0.82,0.01,0.11}{\frac{b}{d}}$};
+        % Text Node
+        \draw (347.2,109.6) node [anchor=north west][inner sep=0.75pt]    {$\textcolor[rgb]{0.29,0.56,0.89}{-\frac{b}{a}}$};
+        % Text Node
+        \draw (314.4,214.63) node [anchor=north west][inner sep=0.75pt]    {$\textcolor[rgb]{0.96,0.65,0.14}{\frac{a}{c}}$};
+        % Text Node
+        \draw (458.11,106.06) node [anchor=north west][inner sep=0.75pt]    {$\textcolor[rgb]{0.56,0.07,1}{-\frac{d}{c}}$};
+    \end{tikzpicture}        
+\end{center}
 
 \end{document}
