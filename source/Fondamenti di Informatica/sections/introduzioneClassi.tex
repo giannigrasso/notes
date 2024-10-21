@@ -1,0 +1,133 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+\subsection{La classe \code{Scanner}}
+La classe \code{Scanner} è un semplice scanner di testo che può analizzare tipi primitivi e stringhe.
+Per utilizzare uno scanner è necessario importare la classe, istanziarlo e \textbf{chiuderlo}:
+\begin{lstlisting}[style=java]
+    import java.util.Scanner; //importa la classe
+
+    public class EsempioHasNextInt {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in); //istanzia uno scanner
+
+            System.out.print("Inserisci un numero intero: ");
+            String x = scanner.next(); //utilizza lo scanner
+
+            scanner.close(); //chiude lo scanner
+        }
+    }
+
+\end{lstlisting}
+
+\subsubsection{Anomalia dell'input}
+Quando utilizziamo uno scanner per leggere un numero, premendo invio lasciamo \code{\textbackslash n} nel buffer, in questo modo  quando
+poi proviamo a leggere una stringa, verrà letto soltanto il valore lasciato nel buffer. Per evitare questo ogni volta che leggiamo
+un valore numerico con uno scanner, chiamiamo successivamente il metodo \code{nextLine()}, in modo che svuoti il buffer prima della
+lettura della stringa.
+\begin{lstlisting}[style=java]
+    Scanner scanner = new Scanner(System.in);
+
+    // Lettura di un numero intero
+    System.out.print("Inserisci un numero intero: ");
+    int numero = scanner.nextInt(); // Legge il numero, lascia '\n' nel buffer
+
+    // Dopo aver letto un numero con nextInt(), rimane il carattere '\n' nel buffer.
+    // Il metodo nextLine() viene utilizzato qui per consumare quel '\n' ed evitare
+    // problemi nella successiva lettura di una stringa.
+    scanner.nextLine();
+
+    // Lettura di una stringa
+    System.out.print("Inserisci una stringa: ");
+    String stringa = scanner.nextLine();
+\end{lstlisting}
+
+Per verificare che l'utente inserisca un valore del tipo aspettato quando usiamo uno scanner possiamo usare:
+\begin{lstlisting}[style=java]
+    System.out.print("Inserisci un numero intero: ");
+
+    // Ciclo che continua fino a quando non viene inserito un numero intero valido
+    while (!scanner.hasNextInt()) { // hasNextInt() controlla se il prossimo input
+                                    // è un numero intero, ma non consuma il valore
+        System.out.print("Input non valido. Inserisci un numero intero: ");
+        scanner.nextLine(); // Scarta l'input non valido
+    }
+
+    // Una volta ottenuto un intero, lo memorizziamo e lo stampiamo
+    int number = scanner.nextInt();
+\end{lstlisting}
+
+\pagebreak
+\subsection{Stringhe}
+\subsubsection{Confronti tra stringhe}
+\begin{lstlisting}[style=java]
+    boolean uguali = str1.equals(str2);
+\end{lstlisting}
+
+\subsubsection{Conversione di tipi primitivi}
+\begin{itemize}
+    \item Da \code{String}  a \code{int} \begin{lstlisting}[style=java]
+        String str = "10";
+        int num = Integer.parseInt(str);
+    \end{lstlisting}
+    \item Da \code{String}  a \code{double} \begin{lstlisting}[style=java]
+        String str = "17.42e-2";
+        double num = Double.parseDouble(str);
+    \end{lstlisting}
+    \item Da valore numerico a \code{double} \begin{lstlisting}[style=java]
+        int i = 42;
+        String s1 = "" + i;
+        String s2 = String.valueOf(i);
+        String s3 = Integer.toString(i);
+    \end{lstlisting}
+    \item Da \code{String} a valore numerico \begin{lstlisting}[style=java]
+        int i1 = Integer.parseInt("17030075");
+        int i2 = Integer.valueOf("17030075");
+    \end{lstlisting}
+\end{itemize}
+
+\subsubsection{Operazioni sulle stringhe}
+\begin{itemize}
+    \item \code{s1.length()}, lunghezza della stringa
+    \item \code{s1.charAt(i)}, carattere alla posizione \code{i}
+    \item \code{s1.substring(i, j)}, nuova stringa formata dai caratteri da posizione \code{i} inclusa fino a \code{j} esclusivamente
+    \item \code{s1.indexOf(ch)}, ottieni l'indice del carattere o della stringa all'interno di \code{s1}
+    \item \code{s1.toLowerCase()}, ottieni una copia tutto in minuscolo
+    \item \code{s1.toUpperCase()}, ottieni una copia tutto in maiuscolo
+    \item \code{s1.equalsIgnoreCase(s2)}, confronto ignorando maiuscole e minuscole
+    \item \code{s1.trim()}, ottieni una copia senza spazi a inizio  e fine
+\end{itemize}
+
+\pagebreak
+\subsection{La classe \code{Math}}
+La classe \code{Math} mette a disposizione le seguenti funzioni:
+\begin{itemize}
+    \item \code{Math.pow(base, esponente)}, elevamento a potenza
+    \item \code{Math.sqrt(numero)}, radice quadrata
+    \item \code{Math.log(numero)}, logaritmo naturale
+    \item \code{Math.log10(numero)}, logaritmo in base 10
+    \item \code{Math.sin(radianti)}, seno di un angolo in radianti
+    \item \code{Math.cos(radianti)}, coseno di un angolo in radianti
+    \item \code{Math.tan(radianti)}, tangente di un angolo in radianti
+    \item \code{Math.random()}, genera un numero casuale tra 0.0 (compreso) e 1.0 (escluso)
+\end{itemize}
+
+E le seguenti costanti:
+\begin{itemize}
+    \item \code{Math.E}, base del logaritmo naturale
+    \item \code{Math.PI}, pi greco
+\end{itemize}
+
+\subsection{Generare numeri casuali}
+Per generare numeri casuali con \code{Math.random()} si utilizza:
+\begin{lstlisting}[style=java]
+    int randomInt = (int) ((max - min) * Math.random() + min)
+\end{lstlisting}
+Dove \code{max} rappresenta il valore massimo del range (non compreso) e min quello minimo (compreso).
+
+Se ad esempio volessi avere un range contenente tutti i numeri da 10 a 50 (entrambi compresi) sarebbe:
+\begin{lstlisting}[style=java]
+    int randomInt = (int) ((51 - 10) * Math.random() + 10) //il 51 non è compreso
+\end{lstlisting}
+
+
+\end{document}
