@@ -100,7 +100,7 @@ $$
 $$
 \textbf{Nota:} $\alpha rad = \frac{\pi}{180} \alpha^\circ $
 
-\vspace{1.5cm}
+\vspace{0.5cm}
 \subsubsection{Applicazioni}
 \begin{itemize}
     \item \textbf{Vettore bisecante:} Dati due vettori $\vec{a}$ e $\vec{b}$ si vuole costruire un vettore $\vec{c}$ che divide l'angolo
@@ -156,6 +156,23 @@ $$
         \item Si costruisce un vettore $ka$ che abbia la stessa norma di $b$
         \item Un vettore che biseca l'angolo tra $a$ e $b$, ad esempio $ka + b$
     \end{enumerate}
+
+    \textbf{Esempio} $a = \begin{bmatrix}
+        1 \\ 8 \\ 4
+    \end{bmatrix}, b = \begin{bmatrix}
+        2 \\ 1 \\ 2
+    \end{bmatrix}$
+    \begin{align*}
+        \left\lVert a\right\rVert = 7, \left\lVert b\right\rVert = 3 \Rightarrow \frac{1}{7}a \text{ ha norma } 1 \Rightarrow \frac{3}{7}a \text{ ha norma } 3 \\
+        \frac{3}{7} a + b = \begin{bmatrix}
+            3 / 7 \\ 24 / 7 \\ 12 / 7
+        \end{bmatrix} + \begin{bmatrix}
+            2 \\ 1 \\ 2
+        \end{bmatrix} = \begin{bmatrix}
+            17 / 7 \\ 31/7 \\ 26 / 7 
+        \end{bmatrix}
+    \end{align*}
+
     \item \textbf{Proiezione vettore su vettore:} $pro(b,a) = \frac{b \cdot a}{a \cdot a}a$ dove $k = \frac{b \cdot a}{a \cdot a}$
     \begin{center}
         \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
@@ -327,5 +344,155 @@ e quindi
 $$
     \alpha = sin^{-1}\left( \frac{\left\lVert u \times v\right\rVert }{\left\lVert u\right\rVert \left\lVert v\right\rVert } \right)
 $$
+
+\pagebreak
+\subsection{Il prodotto misto}
+Il prodotto misto si fa tra 3 vettori e ritorna uno \underline{scalare} (un numero) e non un vettore.
+$$
+    (a\times b) \cdot c
+$$
+che è uguale al \textbf{volume} del parallelepipedo generato da $a,b,c$.
+
+\begin{itemize}
+    \item $(a\times b) \cdot c > 0\Rightarrow a,b,c$ è una terna destrorsa
+    \item $(a\times b) \cdot c < 0\Rightarrow a,b,c$ è una terna sinistrorsa
+    \item $(a\times b) \cdot c = 0\Rightarrow a,b,c$ sono linearmente dipendenti
+\end{itemize}
+
+\subsubsection{Proprietà}
+\begin{align*}
+    &\mathbf{a \times b\cdot c}=\mathbf{b\times c\cdot a}=\mathbf{c\times a\cdot b} \\
+    &\mathbf{b\times a\cdot c}=\mathbf{c\times b\cdot a}=\mathbf{a\times c\cdot b} \\
+    &\mathbf{a\times b\cdot c}=-\mathbf{b\times a\cdot c}
+\end{align*}
+
+\begin{align*}
+    &k\mathbf{a}\times\mathbf{b}\cdot\mathbf{c}=\mathbf{a}\times k\mathbf{b}\cdot\mathbf{c}=\mathbf{a}\times\mathbf{b}\cdot k\mathbf{c}=k(\mathbf{a}\times\mathbf{b}\cdot\mathbf{c}) \\
+    &(ha)\times(jb)\cdot(kc)=(hjk)(a\times b\cdot c)
+\end{align*}
+
+\subsubsection{Allineamento di 3 punti}
+\begin{itemize}
+    \item \textbf{Metodo 1:} i punti $A,B,C$ sono allineati se e solo se $AC = kAB$
+    \item \textbf{Metodo 2 (in $\mathbb{R}^3$):} i punti $A,B,C$ sono allineati se e solo se $AB \times AC = 0$
+\end{itemize}
+
+\subsubsection{Complanarità di 4 punti}
+$$
+    (AB \times AC) \cdot AD = 0
+$$
+se $n = AB \times AC$ dà un vettore ortogonale al piano $ABC$, il punto $D$ invece appartiene a questo piano se e solo se
+$AD$ è ortogonale a $n$, ovvero se $n \cdot AD$ è nullo.
+
+\subsubsection{Distanze}
+\begin{itemize}
+    \item Dal punto $P$ al punto $A$: $\phantom{--}\sqrt{AP \cdot AP}$
+    \item Dal punto $P$ alla retta $AB$: $\phantom{--}\frac{\left\lVert AB \times AP\right\rVert }{\left\lVert AB\right\rVert }$
+    \begin{center}
+        \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+            %Straight Lines [id:da892655129394256] 
+            \draw    (210.5,220.75) -- (448.33,219.68) ;
+            \draw [shift={(450.33,219.67)}, rotate = 179.74] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+            %Straight Lines [id:da6822806692901882] 
+            \draw    (210.5,220.75) -- (307.51,134.33) ;
+            \draw [shift={(309,133)}, rotate = 138.3] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+            %Straight Lines [id:da03778675317968749] 
+            \draw  [dash pattern={on 0.84pt off 2.51pt}]  (309,133) -- (310.6,219) ;
+            %Shape: Circle [id:dp8171200159632993] 
+            \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (207.7,220.75) .. controls (207.7,219.2) and (208.95,217.95) .. (210.5,217.95) .. controls (212.05,217.95) and (213.3,219.2) .. (213.3,220.75) .. controls (213.3,222.3) and (212.05,223.55) .. (210.5,223.55) .. controls (208.95,223.55) and (207.7,222.3) .. (207.7,220.75) -- cycle ;
+            %Shape: Circle [id:dp7640322309786388] 
+            \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (307.8,221.8) .. controls (307.8,220.25) and (309.05,219) .. (310.6,219) .. controls (312.15,219) and (313.4,220.25) .. (313.4,221.8) .. controls (313.4,223.35) and (312.15,224.6) .. (310.6,224.6) .. controls (309.05,224.6) and (307.8,223.35) .. (307.8,221.8) -- cycle ;
+            %Shape: Circle [id:dp08802824506738027] 
+            \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (450.33,219.67) .. controls (450.33,218.12) and (451.59,216.87) .. (453.13,216.87) .. controls (454.68,216.87) and (455.93,218.12) .. (455.93,219.67) .. controls (455.93,221.21) and (454.68,222.47) .. (453.13,222.47) .. controls (451.59,222.47) and (450.33,221.21) .. (450.33,219.67) -- cycle ;
+            %Shape: Circle [id:dp7912076503628818] 
+            \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (306.2,133) .. controls (306.2,131.45) and (307.45,130.2) .. (309,130.2) .. controls (310.55,130.2) and (311.8,131.45) .. (311.8,133) .. controls (311.8,134.55) and (310.55,135.8) .. (309,135.8) .. controls (307.45,135.8) and (306.2,134.55) .. (306.2,133) -- cycle ;
+            
+            % Text Node
+            \draw (272,139.4) node [anchor=north west][inner sep=0.75pt]    {$b$};
+            % Text Node
+            \draw (418.8,221.4) node [anchor=north west][inner sep=0.75pt]    {$a$};
+            % Text Node
+            \draw (196,211.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {\textcolor[rgb]{0.29,0.56,0.89}{A}};
+            % Text Node
+            \draw (300,113.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {\textcolor[rgb]{0.29,0.56,0.89}{P}};
+            % Text Node
+            \draw (454.4,200) node [anchor=north west][inner sep=0.75pt]   [align=left] {\textcolor[rgb]{0.29,0.56,0.89}{B}};
+            % Text Node
+            \draw (306.4,225.2) node [anchor=north west][inner sep=0.75pt]   [align=left] {\textcolor[rgb]{0.29,0.56,0.89}{H}};
+            % Text Node
+            \draw (229.2,199.8) node [anchor=north west][inner sep=0.75pt]    {$\alpha $};
+            % Text Node
+            \draw (332.26,143.09) node [anchor=north west][inner sep=0.75pt]  [rotate=-89.05]  {$\textcolor[rgb]{0.29,0.56,0.89}{\| b\| sin( \alpha )}$};
+            % Text Node
+            \draw (222.35,224.05) node [anchor=north west][inner sep=0.75pt]  [rotate=-359.56]  {$\textcolor[rgb]{0.82,0.01,0.11}{\| b\| cos( \alpha )}$};
+        \end{tikzpicture}            
+    \end{center}
+    \vspace{0.5cm}
+    \item Dal punto $P$ al piano $ABC$: $\phantom{--}\frac{\left\lVert AB \times AC \cdot AP\right\rVert }{\left\lVert AB \times AC\right\rVert }$
+\end{itemize}
+
+\pagebreak
+\subsubsection{Proiezione di un punto su un piano}
+\begin{center}
+    \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+        %Shape: Parallelogram [id:dp9110911154214759] 
+        \draw  [fill={rgb, 255:red, 240; green, 240; blue, 240 }  ,fill opacity=1 ] (228.45,151.75) -- (411.5,151.75) -- (333.05,251.25) -- (150,251.25) -- cycle ;
+        %Straight Lines [id:da8691855199076285] 
+        \draw    (240.33,191.67) -- (317.97,239.94) ;
+        \draw [shift={(319.67,241)}, rotate = 211.88] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Straight Lines [id:da9679421894754798] 
+        \draw    (240.33,191.67) -- (337.08,162.82) ;
+        \draw [shift={(339,162.25)}, rotate = 163.4] [color={rgb, 255:red, 0; green, 0; blue, 0 }  ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Straight Lines [id:da8562099048635072] 
+        \draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ]   (240.33,191.67) -- (308.74,140.2) ;
+        \draw [shift={(310.33,139)}, rotate = 143.04] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Straight Lines [id:da1499080300619997] 
+        \draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (240.33,191.67) -- (239.68,89.67) ;
+        \draw [shift={(239.67,87.67)}, rotate = 89.63] [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+        %Straight Lines [id:da22301277999575264] 
+        \draw  [dash pattern={on 0.84pt off 2.51pt}]  (240.33,191.67) -- (311.5,208.75) ;
+        %Straight Lines [id:da0026953899713432206] 
+        \draw  [dash pattern={on 0.84pt off 2.51pt}]  (241,127.25) -- (310.33,139) ;
+        %Straight Lines [id:da6550164242035883] 
+        \draw  [dash pattern={on 0.84pt off 2.51pt}]  (310.33,139) -- (311.5,208.75) ;
+        %Shape: Circle [id:dp9257625086160886] 
+        \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (239.19,127.25) .. controls (239.19,126.25) and (240,125.44) .. (241,125.44) .. controls (242,125.44) and (242.81,126.25) .. (242.81,127.25) .. controls (242.81,128.25) and (242,129.06) .. (241,129.06) .. controls (240,129.06) and (239.19,128.25) .. (239.19,127.25) -- cycle ;
+        %Shape: Circle [id:dp9845261372187333] 
+        \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (238.52,191.67) .. controls (238.52,190.67) and (239.33,189.85) .. (240.33,189.85) .. controls (241.33,189.85) and (242.15,190.67) .. (242.15,191.67) .. controls (242.15,192.67) and (241.33,193.48) .. (240.33,193.48) .. controls (239.33,193.48) and (238.52,192.67) .. (238.52,191.67) -- cycle ;
+        %Shape: Circle [id:dp9890538242111186] 
+        \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (310.33,139) .. controls (310.33,138) and (311.14,137.19) .. (312.15,137.19) .. controls (313.15,137.19) and (313.96,138) .. (313.96,139) .. controls (313.96,140) and (313.15,140.81) .. (312.15,140.81) .. controls (311.14,140.81) and (310.33,140) .. (310.33,139) -- cycle ;
+        %Shape: Circle [id:dp2812600709350239] 
+        \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (339,162.25) .. controls (339,161.25) and (339.81,160.44) .. (340.81,160.44) .. controls (341.81,160.44) and (342.63,161.25) .. (342.63,162.25) .. controls (342.63,163.25) and (341.81,164.06) .. (340.81,164.06) .. controls (339.81,164.06) and (339,163.25) .. (339,162.25) -- cycle ;
+        %Shape: Circle [id:dp24076253307157125] 
+        \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (309.69,206.94) .. controls (309.69,205.94) and (310.5,205.13) .. (311.5,205.13) .. controls (312.5,205.13) and (313.31,205.94) .. (313.31,206.94) .. controls (313.31,207.94) and (312.5,208.75) .. (311.5,208.75) .. controls (310.5,208.75) and (309.69,207.94) .. (309.69,206.94) -- cycle ;
+        %Shape: Circle [id:dp7425254159232946] 
+        \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (317.85,241) .. controls (317.85,240) and (318.67,239.19) .. (319.67,239.19) .. controls (320.67,239.19) and (321.48,240) .. (321.48,241) .. controls (321.48,242) and (320.67,242.81) .. (319.67,242.81) .. controls (318.67,242.81) and (317.85,242) .. (317.85,241) -- cycle ;
+        %Shape: Circle [id:dp3954461228898406] 
+        \draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (237.85,89.48) .. controls (237.85,88.48) and (238.67,87.67) .. (239.67,87.67) .. controls (240.67,87.67) and (241.48,88.48) .. (241.48,89.48) .. controls (241.48,90.48) and (240.67,91.29) .. (239.67,91.29) .. controls (238.67,91.29) and (237.85,90.48) .. (237.85,89.48) -- cycle ;
+        
+        % Text Node
+        \draw (224,191.33) node [anchor=north west][inner sep=0.75pt]   [align=left] {\textcolor[rgb]{0.29,0.56,0.89}{A}};
+        % Text Node
+        \draw (326.33,227.67) node [anchor=north west][inner sep=0.75pt]   [align=left] {\textcolor[rgb]{0.29,0.56,0.89}{B}};
+        % Text Node
+        \draw (347,155.67) node [anchor=north west][inner sep=0.75pt]   [align=left] {\textcolor[rgb]{0.29,0.56,0.89}{C}};
+        % Text Node
+        \draw (316.67,125.33) node [anchor=north west][inner sep=0.75pt]   [align=left] {\textcolor[rgb]{0.29,0.56,0.89}{P}};
+        % Text Node
+        \draw (314.67,202) node [anchor=north west][inner sep=0.75pt]   [align=left] {\textcolor[rgb]{0.29,0.56,0.89}{H}};
+        % Text Node
+        \draw (224.33,119) node [anchor=north west][inner sep=0.75pt]   [align=left] {\textcolor[rgb]{0.29,0.56,0.89}{K}};
+        % Text Node
+        \draw (226.67,95.33) node [anchor=north west][inner sep=0.75pt]   [align=left] {\textcolor[rgb]{0.82,0.01,0.11}{n}};
+    \end{tikzpicture}        
+\end{center}
+
+\begin{enumerate}
+    \item $n = AB\times AC$
+    \item $AK = \text{proiezione di } AP \text{su } n$
+    \item $H = P + PH = P + KA$
+\end{enumerate}
+\textbf{Nota:} possiamo usare qualsiasi vettore parallelo a $n$.
+
 
 \end{document}
