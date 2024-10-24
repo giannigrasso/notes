@@ -134,10 +134,93 @@ I don't cares vengono usati per semplificare i circuiti, decidiamo noi il criter
 possono verificarsi.
 % Vedi slide 45 se hai dubbi
 
+\pagebreak
+\subsection{Mappe di Karnaugh}
+\subsubsection{Grey code}
+Il Grey Code è una rappresentazione alternativa per i numeri binari:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/grayCode.png}
+\end{figure}
 
+\subsubsection{Come creare una mappa}
+Data una funzione
+$$
+    Y = f(A, B, C, D)
+$$
+la sua mappa di Karnaugh si costruisce facendo una tabella contenente $2^n$ colonne, dove $n$ è il numero di input per la parte superiore
+e $2^m$ righe, dove $m$ è ikl numero di input per la parte inferiore.
 
+\textbf{Nota:} la scelta di quanti e quali input usare per le righe e per le colonne è libera.
+% Vedi immagine a slide 53 e 54
 
+Ad ogni casella inoltre corrisponde una combinazione di Grey Code per le righe e una per le colonne. Il valore delle caselle è dato
+dalla combinazione di questi codici. La struttura consigliata per questo tipo di mappa è di \textbf{massimo 4 input}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/karnaugh.png}
+\end{figure}
 
+\subsubsection{Come usare una mappa}
+Possiamo utilizzare queste mappe per risolvere graficamente una funzione booleana. Sostituendo i valori del Grey Code con gli input e gli
+input negati della funzione possiamo facilmente stabilire dei pattern nella mappa per i \textbf{SOP} o i \textbf{POS} (casi più comuni).
+% Vedi da slide 64 a 68
+
+\vspace{1cm}
+\subsubsection{Da tabella della verità a mappa}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/tabellaMappa.png}
+\end{figure}
+
+\vspace{1cm}
+\subsubsection{Formare i gruppi}
+Possiamo utilizzare una mappa di Karnaugh per trovare dei pattern. In generale due caselle adiacenti hanno sempre e solo un bit di
+differenza e sono quelle che quindi possono essere ragggruppate. Bisogna sempre cercare di fare \underline{meno gruppi possibili}, 
+prendendo quindi le \underline{combinazioni più grandi possibili}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/gruppi.png}
+\end{figure}
+
+Ogni gruppo formato rappresenta un'espressione booleana, se abbiamo formato correttamente i gruppi esse si semplificano ad un solo letterale.
+La funzione finale semplificata al massimo sarà l'unione dei letterali restituiti da ogni singolo gruppo.
+
+\textbf{Nota:} la soluzione finale della funzione non è univoca, potrebbero esserci più soluzioni valide semplificate al massimo prendendo
+ad esempio gruppi diversi.l
+% Vedi da slide 77 a 79
+
+\pagebreak
+\subsection{Metodo Quine-McClusky}
+Il metodo Quine-McClusky è un algoritmo alternativo alla mappa di Karnaugh, lo si preferisce quando abbiamo più di 4 input.
+
+\subsubsection{Peso e distanza}
+$$
+    HD(XY) = w(X\oplus Y)
+$$
+\begin{itemize}
+    \item $HD$ indica la distanza tra due parole binarie, ovvero la quantità di \code{bit} differenti tra loro
+    \item $w$ indica il peso di una parola binaria, ovvero quanti \code{bit} sono $1$
+\end{itemize}
+
+\subsubsection{Esempio}
+Facciamo ora un esempio dove applichiamo il metodo McClusky. Supponiamo di voler minimizzare la funzione
+$$
+    F(A,B,C,D) = \underbrace{\sum m(4,5,6,8,9,10,13)}_{\text{ON - Set}} + \underbrace{\sum d(0,7,15)}_{\text{DC - Set}}
+$$
+
+\vspace{0.2cm}
+\begin{enumerate}
+    \item Riempire la colonna 1 con i \underline{MIN termini} di ON-set e DC-set raggruppati in base al loro peso
+    \item Confrontare gli elementi dei gruppi adiacenti alla ricerca di termini a distanza 1. Eliminare la variabile e mettere nella
+    colonna successiva. \textit{es.} $0000$ e $0100 \Rightarrow 0-00$. 
+
+    Segnare con \checkmark i termini che ne generano uno più semplice. Se non generano altri termini segnare con \textit{IP} (\textbf{Implicante Primo}).
+    
+    \textbf{Nota:} ripetere questo step finchè non si possono avere più combinazioni.
+    \item Creare la tabella di copertura che permette di trovare la collezione minima di \textbf{IP} che copre l'ON-set.
+\end{enumerate}
+% Vedi da slide 111 a 161 :)
 
 
 \end{document}
