@@ -175,11 +175,7 @@ e uno da base 2 a base 10, in questo caso si parte dal \textit{LSB}:
 Al punto in cui siamo arrivati ora non abbiamo modo di esprimere delle radici con Horner. Vogliamo dunque ampliare l'insieme razionale
 $\mathbb{Q}$ ed estenderlo a tutti i numeri reali $\mathbb{R}$.
 
-Il problema qui è che i numeri reali sono infiniti, mentre i numeri rappresentabili da un computer sono finiti. Dobbiamo quindi scegliere
-dei \textbf{numeri macchina}, ovvero i valori che possiamo effettivamente rappresentare, i valori che non sono numeri macchina vengono 
-aapprossimati al numero macchina più vicino.
-
-\vspace{1cm}
+\vspace{0.5cm}
 Per evitare errori di approssimazioni utilizziamo la notazione scientifica, consideriamo però una notazione scientifica in 
 base $2$ e non in base $10$ come siamo abituati.
 
@@ -194,5 +190,44 @@ Per farlo possiamo usare il formato float, dati $32$ bit esso si basa sulla segu
 
 \textbf{Nota:} il formato float \underline{non} utilizza il complemento a due.
 
+\vspace{0.5cm}
+%\subsubsection{Algoritmo inverso}
+Con la notazione appena fornita non possiamo rappresentare lo zero, i numeri più vicini allo zero che possiamo rappresentare sono
+\begin{align*}
+    + 1.0 * 2^{-127} =& -\frac{1}{127}\\
+    - 1.0 * 2^{-127} =& \phantom{-}\frac{1}{127} 
+\end{align*}
+entrambi \underline{diversi da zero}.
+
+\vspace{0.5cm}
+\subsection{Applicazione}
+\begin{itemize}
+    \item Esponente, $exp = horner(bit) -127$
+    \item Numero, $n = sgn * 1.XXX * 2^{exp}$
+\end{itemize}
+
+\subsubsection{Numeri macchina}
+C'è però un problema, i numeri reali sono infiniti, mentre i numeri rappresentabili da un computer sono finiti. Dobbiamo quindi scegliere
+dei \underline{numeri macchina}, ovvero i valori che possiamo effettivamente rappresentare con 23 bit, i valori che non sono numeri macchina vengono 
+aapprossimati al numero macchina più vicino. 
+
+Se ad esempio un numero intero non è rappresentabile, troveremo il numero macchina più vicino ad esso e, sottraendolo al numero di partenza
+troveremo l'errore assoluto di quella rappresentazione.
+\begin{itemize}
+    \item Errore assoluto
+    \begin{itemize}
+        \item $x$: numero reale
+        \item $x_m$: numero macchina \begin{align*}
+            e_a =& \left\lvert x - x_m\right\rvert  \\
+            e_r =& \frac{\left\lvert x - x_m\right\rvert}{x} \\
+            e_a <& 2^{p-s-1}
+        \end{align*}
+        dove nell'ultima formula $p$ è l'esponente del numero e $s$ il numero di bit della mantissa.
+    \end{itemize}
+    \item Errore relativo \begin{align*}
+        e_r = \frac{e}{}
+        % CHIEDERE IN CLASSE
+    \end{align*}
+\end{itemize}
 
 \end{document}
