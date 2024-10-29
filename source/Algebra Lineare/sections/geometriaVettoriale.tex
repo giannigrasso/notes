@@ -494,5 +494,80 @@ $AD$ è ortogonale a $n$, ovvero se $n \cdot AD$ è nullo.
 \end{enumerate}
 \textbf{Nota:} possiamo usare qualsiasi vettore parallelo a $n$.
 
+\vspace{1cm}
+\subsection{La retta}
+\subsubsection{Equazioni parametriche}
+Dato un punto $A = (X_0, y_0, z_0)$ e un vettore direzione $v = \begin{bmatrix}
+    a \\ b \\ c
+\end{bmatrix}$ non nullo, la retta $r$ passante per $A$ e parallela a $v$ ha equazioni parametriche
+\begin{align*}
+    \begin{cases}
+        x = x_0 + at \\
+        y = y_0 + bt \\
+        z = z_0 + ct
+    \end{cases}
+\end{align*}
+Le equazioni parametriche di una retta sono infinite, basta prendere un punto qualsiasi nella retta e un vettore direzione parallelo.
+
+\vspace{1cm}
+\subsubsection{Posizioni reciproche di due rette in $\mathbb{R}^3$}
+Due rette $r: A,u$ e $s: B,v$ nello spazio possono essere:
+\begin{itemize}
+    \item \textbf{Coincidenti}
+    \begin{itemize}
+        \item Geometricamente \begin{align*}
+            u \parallel v \text{ e }& A\in s \\
+            \Leftrightarrow& B \in r \\
+            \Leftrightarrow& \vec{AB} \parallel \vec{u} \\
+            \Leftrightarrow& \vec{AB} \parallel \vec{v}
+        \end{align*} 
+        \item Algebricamente \begin{align*}
+            u \times& v = \vec{0} \\
+            \text{e} \\
+            \vec{u} \times& \vec{AB} = \vec{0} \\
+            (\Leftrightarrow&  \vec{v} \times \vec{AB} = \vec{0})
+        \end{align*} 
+    \end{itemize}
+    \item \textbf{Parallele}
+    \begin{itemize}
+        \item Geometricamente \begin{align*}
+            u \parallel v \text{ e }& A\notin s \\
+            \Leftrightarrow& B \notin r \\
+            \Leftrightarrow& \vec{AB} \nparallel \vec{u} \\
+            \Leftrightarrow& \vec{AB} \nparallel \vec{v}
+        \end{align*} 
+        \item Algebricamente \begin{align*}
+            u \times& v = \vec{0} \\
+            \text{e} \\
+            \vec{u} \times& \vec{AB} \neq \vec{0} \\
+            (\Leftrightarrow&  \vec{v} \times \vec{AB} \neq \vec{0})
+        \end{align*}
+    \end{itemize}
+    \item \textbf{Incidenti}
+    \begin{itemize}
+        \item Geometricamente \begin{align*}
+            u \nparallel v \text{ e }& r\cap s = \{ p\} 
+        \end{align*} 
+        \item Algebricamente \begin{align*}
+            u \times& v \neq \vec{0} \\
+            \text{e} \\
+            \vec{u} \times& \vec{v} \cdot \vec{AP}  =  0 \\
+            (\Leftrightarrow&  \vec{u} \times \vec{v} \cdot \vec{BP} = 0)
+        \end{align*}
+    \end{itemize}
+    \item \textbf{Sghembe}
+    \begin{itemize}
+        \item Geometricamente \begin{align*}
+            u \nparallel v \text{ e }& r\cap s = \{ \} 
+        \end{align*} 
+        \item Algebricamente \begin{align*}
+            u \times& v \neq \vec{0} \\
+            \text{e} \\
+            \vec{u} \times& \vec{v} \cdot \vec{AB} \neq \vec{0}
+        \end{align*}
+    \end{itemize}
+\end{itemize}
+
+
 
 \end{document}
