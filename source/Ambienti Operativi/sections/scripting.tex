@@ -65,7 +65,7 @@ Il comando \code{shift} sposta i valori dei parametri posizionali
     \includegraphics[width=0.7\textwidth]{../images/shift.png}
 \end{figure}
 
-
+\vspace{1cm}
 \subsection{Read}
 Il comando \code{read} legge l'input dell'utente e lo memorizza in una variabile
 \begin{lstlisting}[style=bash]
@@ -84,6 +84,77 @@ Il comando \code{read} legge l'input dell'utente e lo memorizza in una variabile
     read -s -p “Password?” segreto
     echo “Conosco il tuo $segreto!”
 \end{lstlisting}
+
+\vspace{1cm}
+\subsection{Catturare l'output di un comando}
+Con \code{\$()} posso salvare \underline{l'output} di un comando in una variabile.
+\begin{lstlisting}[style=bash]
+    #!/bin/bash
+
+    risultato=$(ls | grep "A") #Attennzione a non mettere spazi dove non servono
+
+    echo "risultato: $risultato"
+\end{lstlisting}
+
+\pagebreak
+\subsection{Test}
+Per verificare una condizione si utilizza il comando \code{test}. Un'espressione vera (true) ritornerà \code{0} mentre un espressione falsa
+ritornerà un valore diverso da zero.
+\begin{lstlisting}[style=bash]
+    #Equal
+    test 5 -eq 5
+
+    #Not equal
+    [ 5 -ne 6 ] #Sintassi alternativa
+
+    #Se la condizione è vera stampa 'OK'
+    test 5 -eq 5 && echo "OK"
+\end{lstlisting}
+%Vedi tabella slide 19
+
+\vspace{0.25cm}
+\subsubsection{Esempio}
+Scriviamo uno script che accetta esattamente due parametri. Se il numero di parametri non è corretto termina l'esecuzione con un codice 
+di errore, altrimenti scrive "OK"
+\begin{lstlisting}[style=bash]
+    ( test $# -eq 2 && echo "OK" && exit 0 ) || exit 1
+
+    test $# -ne 2 && echo "errore" && exit 1
+\end{lstlisting}
+\textbf{Nota:} è importante lasciare uno spazio dopo la parentesi tonda.
+
+\vspace{1cm}
+\subsection{Funzioni}
+\begin{lstlisting}[style=bash]
+    function saluta() {
+        echo "Hello, world"
+    }
+
+    saluta
+\end{lstlisting}
+\textbf{Nota:} una funzione si usa con il suo nome senza l'aggiunta di parentesi tonde dopo.
+
+\vspace{0.25cm}
+\subsubsection{Esempio}
+\begin{lstlisting}[style=bash]
+    function somma() {
+        echo $(expr $1 + $2)
+    }
+
+    somma 10 20
+\end{lstlisting}
+
+oppure utilizzando il \code{return}
+
+\begin{lstlisting}[style=bash]
+    function somma() {
+        risultato=$(expr $1 + $2)
+        return $risultato
+    }
+
+    echo $?
+\end{lstlisting}
+\textbf{Nota:} in questo caso \code{\$1} e \code{\$2} sono i parametri della funzione. 
 
 
 \end{document}
