@@ -1,0 +1,44 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+\subsection{Metodo di bisezione}
+Il metodo di bisezione è un metodo di ricerca incrementale in cui un intervallo che contiene uno zero della funzione viene ripetutamente 
+dimezzato per localizzare con maggior precisone il valore esatto.
+
+Considerando quindi una funzione $f: \mathbb{R} \longrightarrow \mathbb{R}$ che sia \underline{continua} possiamo eseguire i seguenti 
+passaggi:
+\begin{itemize}
+    \item Scegliere due numeri $a$ e $b$ tali che \begin{align*}
+        f(a) \cdot f(b) < 0
+    \end{align*}
+    \item Approssimare lo zero della funzione con il punto medio dell'intervallo $[a, b]$ \begin{align*}
+        c = \frac{a + b}{2}
+    \end{align*}
+    \item Determinare in quale intervallo si trova il risultato valutando $f(a) \cdot f(c)$
+    \begin{itemize}
+        \item Se $f(a) \cdot f(c) < 0$: impostare $b = c$ e ripetere
+        \item Se $f(a) \cdot f(c) > 0$: impostare $a = c$ e ripetere
+        \item Se $f(a) \cdot f(c) = 0$: terminare il processo (lo zero è esattamente $c$)
+    \end{itemize}
+\end{itemize}
+
+\vspace{1cm}
+\subsubsection{Tolleranza}
+Il secondo e il terzo passaggio sono da ripetere finchè non si trova lo zero esatto oppure, scenario più probabile, fino a che $f(c)$
+sarà un valore sufficentemente vicino a zero secondo i nostri criteri.
+
+Possiamo infatti definire una certa soglia di tolleranza sotto la quale consideriamo il risultato esatto, in questo caso procediamo come segue:
+\begin{itemize}
+    \item Definiamo un valore $\epsilon = 0.00...01$
+    \item Controlliamo ad ogni iterazione che \begin{align*}
+        \left\lvert f(c) \right\rvert < \epsilon
+    \end{align*}
+    se questa condizione è soddisfatta ci fermiamo, altrimenti ripetiamo il procedimento
+\end{itemize}
+
+Possiamo inoltre definire il numero di iterazioni che l'algoritmo impiegherà per raggiungere tale precisione:
+\begin{align*}
+    \frac{\left\lvert b - a\right\rvert }{2^n} \leq& \epsilon \\
+    \Longleftrightarrow n \geq& \frac{log(b-a) - log(\epsilon)}{log(2)}
+\end{align*}
+
+\end{document}
