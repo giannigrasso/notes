@@ -126,7 +126,7 @@ di errore, altrimenti scrive "OK"
 \end{lstlisting}
 \textbf{Nota:} è importante lasciare uno spazio dopo la parentesi tonda.
 
-\vspace{1cm}
+\pagebreak
 \subsection{Funzioni}
 \begin{lstlisting}[style=bash]
     function saluta() {
@@ -157,7 +157,115 @@ oppure utilizzando il \code{return}
 
     echo $?
 \end{lstlisting}
-\textbf{Nota:} in questo caso \code{\$1} e \code{\$2} sono i parametri della funzione. 
+\textbf{Nota:} in questo caso \code{\$1} e \code{\$2} sono i parametri della funzione.
 
+\vspace{1cm}
+\subsection{Condizioni}
+\begin{lstlisting}[style=bash]
+    if mkdir nuovacartella 2>/dev/null; then
+        echo "cartella creata"
+    elif touch nuovofile 2>/dev/null; then
+        echo "file creato"
+    else
+        echo "non posso creare ne cartella ne il file"
+    fi
+\end{lstlisting}
+\textbf{Nota:} il comando \code{mkdir nuovacartella} restituisce \code{true} o \code{false} a dipendenza dell'esito del comando. La condizione
+può essere un qualsiasi comando bash.
+
+\vspace{0.25cm}
+\subsubsection{Con \code{test}}
+\begin{lstlisting}[style=bash]
+    if [ $# -ne 2 ] && [ $1 -eq 5 ]; then
+        echo "Devi passarmi due parametri e il primo deve essere 5"
+        exit 1
+    fi
+    echo "tutto OK"
+\end{lstlisting}
+
+\begin{lstlisting}[style=bash]
+    test=""
+
+    if [ -n "$testo" ]; then
+        echo "la stringa non è vuota"
+    fi
+\end{lstlisting}
+\textbf{Nota:} usare sempre le virgolette quando si usa una variabile di testo.
+
+\pagebreak
+\subsection{Cicli}
+\subsubsection{\code{while}}
+\begin{lstlisting}[style=bash]
+    i=1
+    while [ $i -lt 10 ]; do
+        echo "dentro il while, i vale: $i"
+
+        i=$(expr $i + 1)
+    done
+\end{lstlisting}
+
+\vspace{0.25cm}
+Scorrere tutti i parametri (con \code{shift})
+\begin{lstlisting}[style=bash]
+    while [ $# -gt 0 ]; do
+        echo "parametro: $1"
+        shift
+    done
+\end{lstlisting}
+
+\vspace{0.25cm}
+Viene letto il contenuto del file dati.txt linea per linea
+\begin{lstlisting}[style=bash]
+    while read line; do
+        echo "linea: $line"
+    done < dati.txt
+\end{lstlisting}
+
+\vspace{0.5cm}
+\subsubsection{\code{break} e \code{continue}}
+\begin{lstlisting}[style=bash]
+    while [ $# -gt 0 ]; do
+        echo $1
+        if [ "$1" = "x" ]; then
+            break;
+        fi
+        shift
+    done
+\end{lstlisting}
+
+\vspace{0.5cm}
+\subsubsection{\code{for}}
+Scorre tutti i parametri
+\begin{lstlisting}[style=bash]
+    for i in $@; do
+        echo $i
+    done
+\end{lstlisting}
+
+\vspace{0.25cm}
+Scorre il contenuto di tutti file in base a un pattern
+\begin{lstlisting}[style=bash]
+    for file in $(ls /tmp); do
+        while read linea; do
+            echo "linea: $linea"
+        done < $file
+    done
+\end{lstlisting}
+
+\pagebreak
+\subsubsection{\code{switch}}
+\begin{lstlisting}[style=bash]
+    for $file in *.txt; do
+        case $file in
+            a*) echo "inizia con a" ;;
+
+            b*) echo "inizia con b" ;;
+
+            *t*) echo "contiene una t" ;;
+
+            *) echo "caso di default" ;;
+        esac
+    done
+\end{lstlisting}
 
 \end{document}
