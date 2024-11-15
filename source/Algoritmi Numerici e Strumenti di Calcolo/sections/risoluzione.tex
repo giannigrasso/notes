@@ -1,5 +1,9 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
+In questa sezione verranno trattati i \underline{metodi di bracketing}, dei metodi che, dati due intervalli di una funzione,
+trovano una soluzione approssimata di tale funzione.
+
+\vspace{0.5cm}
 \subsection{Metodo di bisezione}
 Il metodo di bisezione è un metodo di ricerca incrementale in cui un intervallo che contiene uno zero della funzione viene ripetutamente 
 dimezzato per localizzare con maggior precisone il valore esatto.
@@ -37,8 +41,33 @@ Possiamo infatti definire una certa soglia di tolleranza sotto la quale consider
 
 Possiamo inoltre definire il numero di iterazioni che l'algoritmo impiegherà per raggiungere tale precisione:
 \begin{align*}
-    \frac{\left\lvert b - a\right\rvert }{2^n} \leq& \epsilon \\
-    \Longleftrightarrow n \geq& \frac{log(b-a) - log(\epsilon)}{log(2)}
+    \frac{\left\lvert b - a\right\rvert }{2^{n+1}} \leq& \epsilon \\
+    \Longleftrightarrow n \geq& \frac{log(b-a) - log(\epsilon)}{log(2)} - 1
 \end{align*}
+
+\pagebreak
+\subsection{Regula falsi}
+La regula falsi (o False Position) è un metodo alternativo al metodo di bisezione per trovare lo zero di una funzione. Utilizzando questo metodo
+non viene fatta la media dei punti $a$ e $b$ per trovare $c$, viene traccaita una retta tra i due punti e $c$ diventa il punto che interseca l'asse
+delle $x$ su quella retta. Questo ci fa risparmiare tempo e operazioni in determinati casi.
+\vspace{0.5cm}
+\begin{itemize}
+    \item Scegliere due numeri $a$ e $b$ tali che \begin{align*}
+        f(a) \cdot f(b) < 0
+    \end{align*}
+    \item Calcoliamo c come punto della retta $ab$ che interseca l'asse $x$\begin{align*}
+        c = a-\frac{f(a)}{\frac{f(b)-f(a)}{(b-a)}}
+    \end{align*}
+    \item Determinare in quale intervallo si trova il risultato valutando $f(a) \cdot f(c)$
+    \begin{itemize}
+        \item Se $f(a) \cdot f(c) < 0$: impostare $b = c$ e ripetere
+        \item Se $f(a) \cdot f(c) > 0$: impostare $a = c$ e ripetere
+        \item Se $f(a) \cdot f(c) = 0$: terminare il processo (lo zero è esattamente $c$)
+    \end{itemize}
+\end{itemize}
+\vspace{0.5cm}
+Ci sono alcuni casi però in cui questa metodo risulta sconveniente rispetto al metodo di bisezione. Per risolvere questo problema possiamo
+combinare i due metodi, si parte quindi con un iterazione di regula falsi seguito da una o più interazioni del metodo di bisezione.
+Per determinare quando passare di nuovo al metodo di bisezione guardiamo dove l'intervallo rimasto uguale durante la prima iterazione cambia.
 
 \end{document}
