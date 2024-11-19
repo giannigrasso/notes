@@ -253,7 +253,7 @@ Scorre il contenuto di tutti file in base a un pattern
 \end{lstlisting}
 
 \pagebreak
-\subsubsection{\code{switch}}
+\subsection{\code{switch}}
 \begin{lstlisting}[style=bash]
     for $file in *.txt; do
         case $file in
@@ -267,5 +267,57 @@ Scorre il contenuto di tutti file in base a un pattern
         esac
     done
 \end{lstlisting}
+
+\vspace{0.5cm}
+\subsection{Here document}
+\begin{itemize}
+    \item Redirige una stringa come input (stdin) di un comando con un \code{<<TAG}
+    \item La forma \code{<<"TAG"} evita l'espansione di variabili all'interno della stringa
+\end{itemize}
+\begin{lstlisting}[style=bash]
+    if [ ! -e $1.java ]; then
+        cat <<FINE > $1.java
+    class $1 {
+        public $1() {
+        }
+
+        public static void main (String args[]) {
+            new $1();
+        }
+    }
+    FINE
+        echo "File $1.java creato"
+    else
+        echo "Errore: il file $1.java esiste già" 1>&2
+        exit 1
+    fi
+\end{lstlisting}
+
+\pagebreak
+\subsection{Elaborazione di stringhe}
+\begin{itemize}
+    \item Usato per modificare delle stringhe secondo alcuni criteri
+    \item Supporta il globbing
+\end{itemize}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../images/elaborazioneStringhe.png}
+\end{figure}
+
+\subsubsection{Esempi}
+\begin{lstlisting}[style=bash]
+    testo="Ambienti Operativi"
+    echo ${testo#Amb}
+    #stampa: ienti Operativi
+
+    testo2="Ambienti Operativi"
+    echo ${file%???}
+    #stampa: Ambienti Operat
+
+    file="miofile.jpg"
+    echo ${file//.jpg/.png}
+    #stampa: miofile
+\end{lstlisting}
+
 
 \end{document}
