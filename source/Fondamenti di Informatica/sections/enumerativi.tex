@@ -1,0 +1,78 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+Un enumerativo definisce un nuovo tipo di dato. Se ad esempio vogliamo creare un tipo \code{Semaforo} con i soli valori \code{ROSSO, GIALLO, VERDE}
+potremmo usare un \code{enum} e utilizzarlo nel seguente modo:
+\begin{lstlisting}[style=java]
+    enum Semaforo {
+        ROSSO, GIALLO, VERDE
+    }
+
+    public class Prova {
+        public static void main(String[] Args) {
+            Semaforo statoSemaforo = Semaforo.ROSSO;
+            Semaforo statoSemaforo = Semaforo.GIALLO;
+            Semaforo statoSemaforo = Semaforo.VERDE;
+        }
+    }
+\end{lstlisting}
+\textbf{Nota:} gli \code{enum} si creano fuori dalla classe.
+
+\textbf{Nota:} il valore di un tipo \code{enum} è costante, non si può cambiare il contenuto delle graffe fuori dalla classe.
+
+\subsection{Operazioni}
+\begin{itemize}
+    \item \code{v1.ordinal()} permette di scoprire la posizione del valore \code{v1} nella lista dei valori di tipo enumerativo
+    \item \code{NomeTipoEnum.valueOf(s1)} converte la stringa \code{s1} nel valore corrispondente all'enumerativo \code{NomeTipoEnum}
+    \item \code{NomeTipoEnum.values()} restituisce un array contenente tutti i valori dell'enumerativo \code{NomeTipoEnum}
+\end{itemize}
+
+\subsection{Enum e switch}
+\begin{lstlisting}[style=java]
+    enum Stagione {
+        PRIMAVERA, ESTATE, AUTUNNO, INVERNO
+    }
+
+    public class Prova {
+        public static void main(String[] Args) {
+            Stagione stagione = Stagione.valueOf(input.nextLine().toUpperCase());
+            switch(stagione) {
+                case PRIMAVERA
+                    ...
+                    break
+                case ESTATE
+                    ...
+                    break
+                case AUTUNNO
+                    ...
+                    break
+                case INVERNO
+                    ...
+                    break
+            }
+        }
+    }
+\end{lstlisting}
+
+\vspace{0.75cm}
+\textbf{Note:} Attenzione, se si utilizza la sintassi nuova, per poter compilare il codice bisogna avere inserito \underline{tutti i casi}
+oppure definire un valore di default.
+\begin{lstlisting}[style=java]
+    enum Stagione {
+        PRIMAVERA, ESTATE, AUTUNNO, INVERNO
+    }
+
+    public class Prova {
+        public static void main(String[] Args) {
+            String mesi = switch (stagione) {
+                case PRIMAVERA -> "Marzo, Aprile, Maggio";
+                case ESTATE -> "Giugno, Luglio, Agosto";
+                case AUTUNNO -> "Settembre, Ottobre, Novembre";
+
+            }
+        }
+    }
+\end{lstlisting}
+Questo esempio non compila perchè \underline{manca il caso INVERNO}.
+
+
+\end{document}

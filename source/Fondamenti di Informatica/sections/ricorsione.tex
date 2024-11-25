@@ -1,0 +1,55 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+\begin{lstlisting}[style=java]
+    private static int sumUpToN(int n) {
+        System.out.println("n: " + n)
+        if(n == 1) {
+            return 1;
+        }
+        int result = sumUpToN(n - 1);
+        return result
+    }
+\end{lstlisting}
+
+\textbf{Nota:} ogni problema ricorsivo può essere risolto anche in modo iterativo:
+\begin{lstlisting}[style=java]
+    private static int sumUpToN(int n) {
+        int result = 0;
+        for(int i = n; i > 0; i++) {
+            result += i;
+        }
+        return result;
+    }
+\end{lstlisting}
+
+\vspace{0.5cm}
+\textbf{Nota:} la ricorsione è una soluzione più "elegante" ma utilizza più risorse, la soluzione iterativa è più efficiente
+da un punto di vista di tempo e risorse.
+%Schema Stack slide 30 :)
+
+\subsubsection{Alcune definizioni}
+\begin{itemize}
+    \item \textbf{Fase di svolgimento:} la procedura continua a chiamare se stessa finchè non incontra la condizione di terminazione
+    \item \textbf{Fase di riavvolgimento:} incontra la condizione di terminazione e le chiamate annidate si chiudono
+\end{itemize}
+\vspace{0.5cm}
+\begin{itemize}
+    \item \textbf{Tail recursion:} la ricorsione è alla fine
+    \item \textbf{Head recursion:} la ricorsione è all'inizio
+    \item \textbf{Middle recursion / multi recursion:} la ricorsione è in mezzo
+\end{itemize}
+\vspace{0.5cm}
+\begin{itemize}
+    \item \textbf{Mutual recursion / indirect recursion:} due funzioni X e Y si chiamano a vicenda
+    \item \textbf{Ricorsione multipla:} una funzione richiama \underline{più volte} se stessa
+\end{itemize}
+
+\subsubsection{Approccio}
+\begin{itemize}
+    \item Dividere il problema in problemi più semplici ma della stessa natura
+    \item Trovare il caso base
+    \item Risolvere il problema
+\end{itemize}
+
+
+\end{document}
