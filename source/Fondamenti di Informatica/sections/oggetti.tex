@@ -1,0 +1,88 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+Una classe in java è definita come segue
+\begin{lstlisting}[style=java]
+    class Libro {
+        String titolo;
+        String nomeAutore;
+        String cognomeAutore;
+        int numeroPagine;
+    }
+
+    public class BibliotecaTest{
+        public static void main(String[] args) {
+            Libro libro1 = new Libro();
+            libro1.titolo = "Viaggio intorno al mondo";
+            libro1.nomeAutore = "Pippo";
+            libro1.cognomeAutore = "Pluto";
+            //libro1.numeroPagine = 100;
+
+            System.out.println("Titolo: " + libro1.titolo);
+        }
+    }
+\end{lstlisting}
+\textbf{Nota:} le variabili all'interno della classe \code{Libro} vengono chiamate \underline{campi} della classe (titolo, nomeAutore, ...).
+
+\textbf{Nota:} L'istanza di una classe è un \underline{oggetto} (libro1).
+
+\textbf{Nota:} Se quando istanziamo un oggetto non specifichiamo il valore di un campo verrà assegnato un valore di default
+(0 per gli interi, \code{null} per le stringhe, \code{false} per i booleani).
+
+\vspace{0.5cm}
+\subsection{Costruttori}
+\begin{lstlisting}[style=java]
+    class Libro {
+        String titolo;
+        String nomeAutore;
+        String cognomeAutore;
+        int numeroPagine;
+
+        // COSTRUTTORE
+        Libro(String titolo, String nomeAutore, String cognomeAutore, int numeroPagine) {
+            this.titolo = titolo;
+            this.nomeAutore = nomeAutore;
+            this.cognomeAutore = cognomeAutore;
+            this.numeroPagine = numeroPagine;
+
+        }
+    }
+
+    public class BibliotecaTest{
+        public static void main(String[] args) {
+            Libro libro1 = new Libro("Viaggio intorno al mondo", "Pippo", "Pluto", 100);
+
+            System.out.println("Titolo: " + libro1.titolo);
+        }
+    }
+\end{lstlisting}
+
+\textbf{Nota:} è possibile definire più costruttori a patto che abbiano un numero di parametri diversi o il tipo dei parametri diversi.
+
+È anche possibile richiamare un costruttore all'interno di un altro costruttore per non duplicare linee di codice utilizzando la keyword
+\code{this}.
+\begin{lstlisting}[style=java]
+    class Libro {
+        String titolo;
+        String nomeAutore;
+        String cognomeAutore;
+        int numeroPagine;
+
+        // COSTRUTTORE
+        Libro(String titolo, String nomeAutore, String cognomeAutore, int numeroPagine) {
+            this(titolo, nomeAutore, cognomeAutore)    
+        
+            this.numeroPagine = numeroPagine < 0 ? 10 : numeroPagine;
+
+        }
+
+        // COSTRUTTORE
+        Libro(String titolo, String nomeAutore, String cognomeAutore) {
+            this.titolo = titolo;
+            this.nomeAutore = nomeAutore;
+            this.cognomeAutore = cognomeAutore;
+        }
+    }
+\end{lstlisting}
+
+
+\end{document}
