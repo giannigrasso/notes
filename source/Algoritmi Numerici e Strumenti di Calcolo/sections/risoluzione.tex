@@ -70,4 +70,34 @@ Ci sono alcuni casi però in cui questa metodo risulta sconveniente rispetto al 
 combinare i due metodi, si parte quindi con un iterazione di regula falsi seguito da una o più interazioni del metodo di bisezione.
 Per determinare quando passare di nuovo al metodo di bisezione guardiamo dove l'intervallo rimasto uguale durante la prima iterazione cambia.
 
+\pagebreak
+\subsection{Il metodo delle secanti}
+Il metodo delle secanti non è un metodo di bracketing come quelli visti in precedenta, bensì un algoritmo ricorsivo.
+In questo caso non restringiamo il campo tra due valori.
+
+Inoltre possiamo scegliere due valori iniziali qualsiasi (non devonono essere di segno opposto come nei metodi visti fin'ora).
+
+\begin{itemize}
+    \item Scegliere due numeri qualsiasi
+    \item Tracciare la retta tra i due punti data da \begin{align*}
+        \frac{x - x_1}{x_2 - x_1} = \frac{y - y_1}{y_2 - y_1}
+    \end{align*}
+    \item Trovare il punto in cui la retta interseca l'asse delle $x$ e usarlo per calcolare il valore successivo \begin{align*}
+        x_2 = x_1 - \frac{f(x_1) (x_1 - x_0)}{f(x_1) - f(x_0)}
+    \end{align*}
+    \item Ripetiamo utilizzando $x_2$ e il punto precedente $x_1$ per calcolare $x_3$ e così via
+\end{itemize}
+
+In generale per trovare il punto successivo valore
+\begin{align*}
+    x_{i+1} = x_i - \frac{f(x_i) (x_i - x_{i-1})}{f(x_i) - f(x_{i-1})}
+\end{align*}
+
+\subsubsection{Quando fermarsi?}
+Per sapere quando fermarsi occorre controllare che la differenza tra la soluzione approssimata trovata in
+due iterazioni successive sia minore di una certa tolleranza $\epsilon$ definita dall’utente:
+\begin{align*}
+    \left\lvert x_i - x_{i-1}  \right\rvert < \epsilon
+\end{align*}
+
 \end{document}
