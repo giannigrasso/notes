@@ -93,6 +93,10 @@ In generale per trovare il punto successivo valore
     x_{i+1} = x_i - \frac{f(x_i) (x_i - x_{i-1})}{f(x_i) - f(x_{i-1})}
 \end{align*}
 
+\textbf{Nota:} La soluzione non converge necessariamente verso lo zero in mezzo ai due valori scelti come $x_0$ e $x_1$ (non è un metodo
+di bracketing) ma su uno zero "casuale".
+
+\vspace{0.5cm}
 \subsubsection{Quando fermarsi?}
 Per sapere quando fermarsi occorre controllare che la differenza tra la soluzione approssimata trovata in
 due iterazioni successive sia minore di una certa tolleranza $\epsilon$ definita dall’utente:
