@@ -21,11 +21,36 @@ potremmo usare un \code{enum} e utilizzarlo nel seguente modo:
 
 \subsection{Operazioni}
 \begin{itemize}
-    \item \code{v1.ordinal()} permette di scoprire la posizione del valore \code{v1} nella lista dei valori di tipo enumerativo
+    \item \code{v1.ordinal()} permette di scoprire la posizione del valore \code{v1} nella lista dei valori di tipo enumerativo (si parte da 0)
+    \begin{lstlisting}[style=java]
+        enum Stagione {
+            PRIMAVERA, ESTATE, INVERNO, AUTUNNO
+        }
+        Stagione stagioneFredda = Stagione.INVERNO;
+        System.out.println(stagioneFredda.ordinal()); //Stampa 3
+    \end{lstlisting}
+
     \item \code{NomeTipoEnum.valueOf(s1)} converte la stringa \code{s1} nel valore corrispondente all'enumerativo \code{NomeTipoEnum}
+    \begin{lstlisting}[style=java]
+        enum Stagione {
+            PRIMAVERA, ESTATE, INVERNO, AUTUNNO
+        }
+        Stagione inverno = Stagione.valueOf("INVERNO");
+    \end{lstlisting}
+
     \item \code{NomeTipoEnum.values()} restituisce un array contenente tutti i valori dell'enumerativo \code{NomeTipoEnum}
+    \item \begin{lstlisting}[style=java]
+        enum Stagione {
+            PRIMAVERA, ESTATE, INVERNO, AUTUNNO
+        }
+        for (Stagione stagione : Stagione.values()) {
+            System.out.print(stagione + " è la stagione numero ");
+            System.out.println(giorno.ordinal() + 1);
+        }
+    \end{lstlisting}
 \end{itemize}
 
+\pagebreak
 \subsection{Enum e switch}
 \begin{lstlisting}[style=java]
     enum Stagione {
